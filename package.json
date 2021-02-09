@@ -1,0 +1,24 @@
+{
+  "name": "xen.db",
+  "version": "1.0.0",
+  "description": "A SQLite Database. Easy-To-Use For Beginners.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quick.db",
+    "inplexdev",
+    "db",
+    "database",
+    "sqlite",
+    "sql",
+    "xen.db"
+  ],
+  "author": "NotMarx",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^7.1.2",
+    "lodash": "^4.17.20"
+  }
+}
