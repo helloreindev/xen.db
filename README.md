@@ -84,7 +84,7 @@ If you're having some troubles installing this, please follow this [Troubleshoot
 1. **Install**: XCode
 2. **Run**: `npm i -g node-gyp` in your console/terminal
 3. **Run**: `node-gyp --python /path/to/python2.7` (Skip this step if you didn't install Python 3.x)
-4/ **Finally, Run**: `npm i xen.db`
+4. **Finally, Run**: `npm i xen.db`
 
 ---
 

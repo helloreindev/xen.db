@@ -2,7 +2,7 @@ class Util {
 
     /**
      * Internal method used to parse key
-     * @param {string} key Key to parse
+     * @param {string} key Key to be parse
      */
     static parseKey(key) {
         if (!key || typeof key !== "string") return { id: null, target: null };

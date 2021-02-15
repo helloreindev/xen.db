@@ -1,22 +1,30 @@
 {
   "name": "xen.db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A SQLite Database. Easy-To-Use For Beginners.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotMarx/Xen.db.git"
+  },
   "keywords": [
-    "quick.db",
     "inplexdev",
     "db",
     "database",
     "sqlite",
     "sql",
-    "xen.db"
+    "xen.db",
+    "sqlite3"
   ],
   "author": "NotMarx",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NotMarx/Xen.db/issues"
+  },
+  "homepage": "https://github.com/NotMarx/Xen.db#readme",
   "dependencies": {
     "better-sqlite3": "^7.1.2",
     "lodash": "^4.17.20"
