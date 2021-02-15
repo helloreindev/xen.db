@@ -1,6 +1,6 @@
 {
   "name": "xen.db",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A SQLite Database. Easy-To-Use For Beginners.",
   "main": "index.js",
   "scripts": {
