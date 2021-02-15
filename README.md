@@ -3,6 +3,7 @@
 [![downloadsBadge](https://img.shields.io/npm/dt/xen.db?style=for-the-badge)](https://www.npmjs.com/package/xen.db)
 [![versionBadge](https://img.shields.io/npm/v/xen.db?style=for-the-badge)](https://www.npmjs.com/package/xen.db)
 
+<<<<<<< Updated upstream
 [Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Source Package Which Provide An Easy Way For Beginners To Access & Store Data In A Database Called Via [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3).  
 
 - Supports Non-Xen.db API.
@@ -12,16 +13,29 @@
 - Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
 - Easily Switch Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
 - Support Various Of Supported Library Such As Above.
+=======
+[Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data** Persistently In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
+
+- **Powerful** - Supports Non-Xen.db API.
+- **Customizable** - More Utility Method.
+- **Family-Friendly & Easy** - Simple & Easy-To-Use For Beginners.
+- **100% Based** - Key Value Based.
+- **Persistent Database** - Value Will Not Lost When Retstarting.
+- **Free-To-Use** - Not Needed To Set Up A SQL Database Server! All Data Is Stored Locally In The Same Project.
+- **Best Friends** - Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
+- **Free Vehicles** - Easily Switch/Migrate Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
+- **Work Together** - Support Various Of Supported Library Such As Above.
+>>>>>>> Stashed changes
 
 ---
 
 # Example
 
-Code A Sandbox Demo
+Coding A Sandbox (Demo)
 
 ```js
-const { Database } = require("xen.db")
-const db = new Database()
+const { Database } = require("xen.db") 
+const db = new Database() 
 
 // Setting an object in the database:
 db.set('userInfo', { difficulty: 'Easy' })

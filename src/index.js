@@ -65,7 +65,7 @@ class Database {
     /**
      * Iterator that yields all data of this db
      */
-    * [Symbol.iterator]() {
+    *[Symbol.iterator]() {
         this.prepareTable(this.tableName);
 
         yield* this.all({ table: this.tableName });
@@ -96,7 +96,7 @@ class Database {
     }
 
     /**
-     * Deletes everything from this database.
+     * Deletes everything in the database
      */
     deleteAll(options = {}) {
         this.prepareTable(options.table || this.tableName);
@@ -122,12 +122,12 @@ class Database {
      * @param {object} options Options
      */
     get(key, options = {}) {
-        if (!key || typeof key !== "string") throw new TypeError("Invalid key specified! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
 
         const table = options.table || this.tableName;
         const { id, target } = Util.parseKey(key);
 
-        if (!id) throw new Error("Could not parse key. Need Help? Check: discord.gg/78RyqJK");
+        if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
 
         // make sure to create table
         this.prepareTable(table);
@@ -136,7 +136,7 @@ class Database {
         if (!data || data.json === "{}") return null;
 
         let parsed = JSON.parse(data.json);
-        try { parsed = JSON.parse(parsed) } catch {}
+        try { parsed = JSON.parse(parsed) } catch { }
 
         if (typeof parsed === "object" && target) {
             parsed = lodash.get(parsed, target);
@@ -161,12 +161,14 @@ class Database {
      * @param {object} options Options
      */
     set(key, value, options = {}) {
-        if (!key || typeof key !== "string") throw new TypeError("Invalid key specified! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value && value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
 
         const table = options.table || this.tableName;
         const { id, target } = Util.parseKey(key);
 
-        if (!id) throw new Error("Could not parse key. Need Help? Check: discord.gg/78RyqJK");
+        if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
 
         this.prepareTable(table);
 
@@ -177,11 +179,11 @@ class Database {
         }
 
         existing = JSON.parse(existing.json);
-        try { existing = JSON.parse(existing) } catch {}
+        try { existing = JSON.parse(existing) } catch { }
 
         if (typeof existing === "object" && target) {
             value = lodash.set(existing, target, value);
-        } else if (target) throw new TypeError("Cannot use target with non-object");
+        } else if (target) throw new TypeError("Cannot Use Target With Non-Object. Need Help? Check: discord.gg/78RyqJK");
 
         value = JSON.stringify(value);
 
@@ -198,12 +200,12 @@ class Database {
      * @returns {boolean}
      */
     has(key, options = {}) {
-        if (!key || typeof key !== "string") throw new TypeError("Invalid key specified! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
 
         const table = options.table || this.tableName;
         const { id, target } = Util.parseKey(key);
 
-        if (!id) throw new Error("Could not parse key. Need Help? Check: discord.gg/78RyqJK");
+        if (!id) throw new Error("Could Not Parse key. Need Help? Check: discord.gg/78RyqJK");
 
         this.prepareTable(table);
 
@@ -212,7 +214,7 @@ class Database {
 
         data = JSON.parse(data.json);
 
-        try { data = JSON.parse(data) } catch {}
+        try { data = JSON.parse(data) } catch { }
 
         if (target && typeof data === "object") {
             data = lodash.get(data, target);
@@ -227,6 +229,8 @@ class Database {
      * @param {object} options Options
      */
     type(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
         const data = this.get(key, options);
         return Array.isArray(data) ? "array" : typeof data;
     }
@@ -238,12 +242,12 @@ class Database {
      * @returns {boolean}
      */
     delete(key, options = {}) {
-        if (!key || typeof key !== "string") throw new TypeError("Invalid key specified! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
 
         const table = options.table || this.tableName;
         const { id, target } = Util.parseKey(key);
 
-        if (!id) throw new Error("Could not parse key. Need Help? Check: discord.gg/78RyqJK");
+        if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
 
         this.prepareTable(table);
 
@@ -261,7 +265,7 @@ class Database {
             this.database.prepare(`UPDATE ${table} SET json = (?) WHERE ID = (?)`).run(data, id);
 
             return true;
-        } else if (target) throw new Error("Cannot use target with non-object. Need Help? Check: discord.gg/78RyqJK");
+        } else if (target) throw new Error("Cannot Use Target With Non-Object. Need Help? Check: discord.gg/78RyqJK");
 
         this.database.prepare(`DELETE FROM ${table} WHERE ID = (?)`).run(id);
 
@@ -283,7 +287,7 @@ class Database {
 
             try {
                 let raw = JSON.parse(row.json);
-                try { raw = JSON.parse(raw) } catch {}
+                try { raw = JSON.parse(raw) } catch { }
 
                 res.push({
                     ID: row.ID,
@@ -294,6 +298,7 @@ class Database {
 
         return res;
     }
+
     /**
      * Push an array type value into the database key
      * @param {string} key Key of the data 
@@ -301,11 +306,15 @@ class Database {
      * @param {object} options Options
      */
     push(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value && value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
         const has = this.has(key, options);
         if (!has) return this.set(key, !Array.isArray(value) ? [value] : value, options);
 
         const data = this.get(key, options);
-        if (!Array.isArray(data)) throw new TypeError("Cannot use push with non-array type. Need Help? Check: discord.gg/78RyqJK");
+        if (!Array.isArray(data)) throw new TypeError("Cannot Use Push With Non-Array Type. Need Help? Check: discord.gg/78RyqJK");
         if (Array.isArray(value)) {
             const n = data.concat(value);
             return this.set(key, n, options);
@@ -314,25 +323,43 @@ class Database {
         res.push(value);
         return this.set(key, res, options);
     }
+
     /**
-     * Extract a value from an array
+     * Extract a value from an array (Reverse of `(method) Database.push()`)
      * @param {string} key Key of the data
      * @param {any} value The value that wanted to be extracted/pull
      * @param {object} options Options
      */
     pull(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value && value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
         const data = this.get(key, options);
-        if (!Array.isArray(data)) throw new TypeError("Cannot use pull with non-array type. Need Help? Check: discord.gg/78RyqJK");
+        if (!Array.isArray(data)) throw new TypeError("Cannot Use Pull With Non-Array Type. Need Help? Check: discord.gg/78RyqJK");
 
         if (!Array.isArray(value)) return this.set(key, data.filter(x => x !== value), options);
         return this.set(key, data.filter(x => !value.includes(x)), options);
     }
+
+    /**
+     * Extract a value from an array. Alias of `(method) Database.pull()`
+     * @param {string} key Key of the data
+     * @param {any} value The value that wanted to be extracted
+     * @param {object} options Options
+     */
+    remove(key, value, options = {}) {
+        return this.pull(key, value, options)
+    }
+
     /**
      * Alias of `(method) Database.all()` but easier to sort by key
      * @param {string} key The key of the data
      * @param {object} options Options
      */
-    startsWith(key, options = {}) {        
+    startsWith(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
         let data = this.filter(i => i.ID.startsWith(key), options);
         if (ops && typeof ops.sort === "string") {
             if (ops.sort.startsWith(".")) ops.sort = ops.sort.slice(1);
@@ -342,12 +369,15 @@ class Database {
 
         return data;
     }
+
     /**
      * Alias of `(method) Database.all()` but easier to sort by key
      * @param {string} key The key of the data
      * @param {object} options Options
      */
     endsWith(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
         let data = this.filter(i => i.ID.endsWith(key), options);
         if (ops && ops.sort && typeof ops.sort === "string") {
             if (ops.sort.startsWith(".")) ops.sort = ops.sort.slice(1);
@@ -357,6 +387,7 @@ class Database {
 
         return data;
     }
+
     /**
      * Alias of `(method) Database.all()`
      * @param {object} options Options
@@ -364,6 +395,7 @@ class Database {
     fetchAll(options = {}) {
         return this.all(options);
     }
+
     /**
      * Add numbers to a key in the database
      * @param {string} key Key of the data
@@ -371,12 +403,15 @@ class Database {
      * @param {object} options Options
      */
     add(key, value, options = {}) {
-        if (typeof value !== "number") throw new TypeError("Value must be a number! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
 
         const has = this.get(key, options);
         if (!has) return this.set(key, 0 + value, options);
         return this.set(key, has + value, options);
     }
+
     /**
      * Subtract numbers to a key in the database
      * @param {string} key Key of the data
@@ -384,12 +419,15 @@ class Database {
      * @param {object} options Options
      */
     subtract(key, value, options = {}) {
-        if (typeof value !== "number") throw new TypeError("Value must be a number! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
 
         const has = this.get(key, options);
         if (!has) return this.set(key, 0 - value, options);
         return this.set(key, has - value, options);
     }
+
     /**
      * Multiply numbers to a key in the database
      * @param {string} key Key of the data
@@ -397,12 +435,15 @@ class Database {
      * @param {object} options Options
      */
     multiply(key, value, options = {}) {
-        if (typeof value !== "number") throw new TypeError("Value must be a number! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
 
         const has = this.get(key, options);
         if (!has) return this.set(key, 0 * value, options);
         return this.set(key, has * value, options);
     }
+
     /**
      * Divide numbers to a key in the database 
      * @param {string} key Key of the data
@@ -410,12 +451,15 @@ class Database {
      * @param {object} options Options
      */
     divide(key, value, options = {}) {
-        if (typeof value !== "number") throw new TypeError("Value must be a number! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
 
         const has = this.get(key, options);
         if (!has) return this.set(key, 0 / value, options);
         return this.set(key, has / value, options);
     }
+
     /**
      * Modulus for existing data with the given numerical value.
      * @param {string} key Key of the data 
@@ -423,12 +467,15 @@ class Database {
      * @param {object} options Options
      */
     modulus(key, value, options = {}) {
-        if (typeof value !== "number") throw new TypeError("Value must be a number! Need Help? Check: discord.gg/78RyqJK");
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
 
         const has = this.get(key, options);
         if (!has) return this.set(key, 0 % value, options);
         return this.set(key, has % value, options);
     }
+
     /**
      * Returns array of keys
      * @param {object} options Options
@@ -436,6 +483,7 @@ class Database {
     keyArray(options = {}) {
         return this.map(m => m.ID, options);
     }
+
     /**
      * Returns array of values
      * @param {object} options Options
@@ -451,7 +499,7 @@ class Database {
      */
     drop(options = {}) {
         const table = options.table || this.tableName;
-        
+
         try {
             this.database.prepare(`DROP TABLE ${table}`).run();
             return true;
@@ -474,6 +522,8 @@ class Database {
      * @returns {boolean}
      */
     includes(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
         return this.has(key, options);
     }
 
@@ -587,12 +637,14 @@ class Database {
     indexOf(searchElement, fromIndex = 0, options = {}) {
         return this.all(options).indexOf(searchElement, fromIndex);
     }
+
     /**
      * Returns a value representation of an array
      */
     toString() {
         return `<Database ${this.length}>`;
     }
+
     /**
      * Used by the JSON.stringify method to enable the transformation of an object's data for JavaScript Object Notation (JSON) serialization.
      * @param {object} options Options
@@ -600,6 +652,7 @@ class Database {
     toJSON(options) {
         return this.all(options);
     }
+
     /**
      * Returns all table name
      */
@@ -623,19 +676,20 @@ class Database {
         };
 
         if (options.stringify) data = JSON.stringify(data, null, options.format ? (typeof options.format === "number" ? options.format : "\t") : null);
-        
+
         return data;
     }
-/**
- * This method updates current database manager with a new one. Database parameter can either be `Database` instance or `BetterSQLite3.Database` instance
- * @param {any} database The database
- */
+
+    /**
+     * This method updates current database manager with a new one. Database parameter can either be `Database` instance or `BetterSQLite3.Database` instance
+     * @param {any} database The database
+     */
     use(database) {
-        if (!database) throw new Error("Database was not provided!");
+        if (!database) throw new Error("Database Was Not Provided!");
         if (database.prototype instanceof Database || database instanceof Database) this._database = database._database;
         if (database instanceof SQLite || database.prototype instanceof SQLite || database instanceof this._database || database.prototype instanceof this._database) this._database = database;
 
-        throw new Error("Invalid database");
+        throw new Error("Invalid Database");
     }
 
     /**
