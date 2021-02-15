@@ -46,8 +46,8 @@ declare module "xen.db" {
         public type(key: string, options?: ExecutorOptions): "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function" | "array";
         public delete(key: string, options?: ExecutorOptions): boolean;
         public all(options?: ExecutorOptions): DataSet[];
-        public push(key: string, valueLike: any | any[], options?: ExecutorOptions): any;
-        public pull(key: string, itemLike: any | any[], options?: ExecutorOptions): any;
+        public push(key: string, value: any | any[], options?: ExecutorOptions): any;
+        public pull(key: string, value: any | any[], options?: ExecutorOptions): any;
         public startsWith(key: string, options?: ExecutorOptions): DataSet[];
         public endsWith(key: string, options?: ExecutorOptions): DataSet[];
         public fetchAll(options?: ExecutorOptions): DataSet[];
