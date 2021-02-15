@@ -3,17 +3,6 @@
 [![downloadsBadge](https://img.shields.io/npm/dt/xen.db?style=for-the-badge)](https://www.npmjs.com/package/xen.db)
 [![versionBadge](https://img.shields.io/npm/v/xen.db?style=for-the-badge)](https://www.npmjs.com/package/xen.db)
 
-<<<<<<< Updated upstream
-[Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Source Package Which Provide An Easy Way For Beginners To Access & Store Data In A Database Called Via [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3).  
-
-- Supports Non-Xen.db API.
-- More Utility Method.
-- Simple & Easy-To-Use For Beginners.
-- Key Value Based.
-- Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
-- Easily Switch Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
-- Support Various Of Supported Library Such As Above.
-=======
 [Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data** Persistently In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
 
 - **Powerful** - Supports Non-Xen.db API.
@@ -25,7 +14,6 @@
 - **Best Friends** - Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
 - **Free Vehicles** - Easily Switch/Migrate Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
 - **Work Together** - Support Various Of Supported Library Such As Above.
->>>>>>> Stashed changes
 
 ---
 
