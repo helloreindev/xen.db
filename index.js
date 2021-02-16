@@ -3,9 +3,9 @@
 // Any problem? Check out: https://discord.gg/78RyqJK
 
 module.exports = {
-    Database: require("./src/index"),
-    Static: require("./src/Static"),
-    Util: require("./src/Util"),
+    Database: require("./Source/Database"),
+    Static: require("./Source/Static"),
+    Util: require("./Source/Util"),
     version: require("./package.json").version
 }
 

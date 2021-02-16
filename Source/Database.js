@@ -353,6 +353,34 @@ class Database {
     }
 
     /**
+     * Fetch a specific value from the database
+     * @param {string} key Key of the data
+     * @param {any} value The value that wanted to be fetched
+     * @param {object} options Options
+     */
+    fetchOne(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value && value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        return this.fetch(key, options).filter(x => x === value)
+    }
+
+    /**
+     * Get a specific value from the database. Alias of `(method) Database.fetchOne()`
+     * @param {string} key Key of the data
+     * @param {any} value The value that wanted to be fetched
+     * @param {object} options Options
+     */
+    getOne(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value && value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        return this.get(key, options).filter(x => x === value)
+    }
+
+    /**
      * Alias of `(method) Database.all()` but easier to sort by key
      * @param {string} key The key of the data
      * @param {object} options Options
@@ -588,7 +616,7 @@ class Database {
      */
     flatMap(fn, options = {}) {
         return this.all(options).flatMap(fn);
-    }
+    } 
 
     /**
      * Identical to Array.reduce
