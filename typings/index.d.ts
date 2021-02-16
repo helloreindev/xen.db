@@ -1,5 +1,7 @@
 import SQLite from "better-sqlite3";
-
+/**
+ * An Easy-To-Use SQLite3 Database. Made By: NotMarx (<notmarx.tech@gmail.com>)
+ */
 declare module "xen.db" {
 
     export interface ParsedKey {
@@ -48,6 +50,9 @@ declare module "xen.db" {
         public all(options?: ExecutorOptions): DataSet[];
         public push(key: string, value: any | any[], options?: ExecutorOptions): any;
         public pull(key: string, value: any | any[], options?: ExecutorOptions): any;
+        public remove(key: string, value: any | any[], options?: ExecutorOptions): any;
+        public fetchOne(key: string, value: any | any[], options?: ExecutorOptions): any;
+        public getOne(key: string, value: any | any[], options?: ExecutorOptions): any;
         public startsWith(key: string, options?: ExecutorOptions): DataSet[];
         public endsWith(key: string, options?: ExecutorOptions): DataSet[];
         public fetchAll(options?: ExecutorOptions): DataSet[];

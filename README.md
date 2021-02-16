@@ -5,15 +5,23 @@
 
 [Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data** Persistently In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
 
-- **Powerful** - Supports Non-Xen.db API.
+- **Powerful** - Supports **Non-Xen.db** API.
 - **Customizable** - More Utility Method.
-- **Family-Friendly & Easy** - Simple & Easy-To-Use For Beginners.
+- **Family-Friendly** - Simple & Easy-To-Use For Beginners.
 - **100% Based** - Key Value Based.
-- **Persistent Database** - Value Will Not Lost When Retstarting.
+- **Persistent Database** - Value Will Not Lost When On Retstarting Session.
 - **Free-To-Use** - Not Needed To Set Up A SQL Database Server! All Data Is Stored Locally In The Same Project.
 - **Best Friends** - Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
 - **Free Vehicles** - Easily Switch/Migrate Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
 - **Work Together** - Support Various Of Supported Library Such As Above.
+
+---
+
+# V2.0.0 Updates:
+
+- **Added New Method** - `(method) Database.fetchOne()` Alias: `(method) Database.getOne()`
+- `(method) Database.fetchOne()` - Fetch A Specific Value(s) From The Database Key.
+- **Repaired** - Fixed Minor Bugs
 
 ---
 
