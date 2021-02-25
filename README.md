@@ -5,6 +5,8 @@
 
 [Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data** Persistently In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
 
+### Features
+
 - **Powerful** - Supports **Non-Xen.db** API.
 - **Customizable** - More Utility Method.
 - **Family-Friendly** - Simple & Easy-To-Use For Beginners.
@@ -14,24 +16,49 @@
 - **Best Friends** - Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
 - **Free Vehicles** - Easily Switch/Migrate Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
 - **Work Together** - Support Various Of Supported Library Such As Above.
+- **Custom Database File** - Create Your Own Custom Database File And Not Just `json.sqlite`! With This, You Can Create More Than 1 Database File!!
 
 ---
 
-# V2.0.0 Updates:
-
-- **Added New Method** - `(method) Database.fetchOne()` Alias: `(method) Database.getOne()`
-- `(method) Database.fetchOne()` - Fetch A Specific Value(s) From The Database Key.
-- **Repaired** - Fixed Minor Bugs
-
----
-
-# Example
+# Example (Default)
 
 Coding A Sandbox (Demo)
 
 ```js
 const { Database } = require("xen.db") 
 const db = new Database() 
+
+// Setting an object in the database:
+db.set('userInfo', { difficulty: 'Easy' })
+// -> { difficulty: 'Easy' }
+ 
+// Pushing an element to an array (that doesn't exist yet) in an object:
+db.push('userInfo.items', 'Sword')
+// -> { difficulty: 'Easy', items: ['Sword'] }
+ 
+// Adding to a number (that doesn't exist yet) in an object:
+db.add('userInfo.balance', 500)
+// -> { difficulty: 'Easy', items: ['Sword'], balance: 500 }
+ 
+// Repeating previous examples:
+db.push('userInfo.items', 'Watch')
+// -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 500 }
+db.add('userInfo.balance', 500)
+// -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 1000 }
+ 
+// Fetching individual properties
+db.get('userInfo.balance') // -> 1000
+db.get('userInfo.items') // ['Sword', 'Watch']
+
+```
+
+# Example (Custom)
+
+```js
+
+const { Database } = require("xen.db")
+const db = new Database("xen.db", { path: "./", table: "JSON"})
+// Creates a Database File called "xen.db" instead of "json.sqlite"
 
 // Setting an object in the database:
 db.set('userInfo', { difficulty: 'Easy' })

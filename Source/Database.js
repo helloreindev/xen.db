@@ -5,41 +5,45 @@ const Util = require("./Util");
 
 class Database {
 
-    constructor() {
+    constructor(databaseFile = "json.sqlite", options = {} ) {
+
+        if (!databaseFile || typeof databaseFile !== "string") throw new TypeError("Invalid Database Name Specified! Need Help? Check: discord.gg/78RyqJK");
 
         /**
          * Database name
          */
-        this.name = "json.sqlite";
+        this.name = databaseFile || "json.sqlite";
 
         /**
          * Database path
          */
-        this.path = "./";
+        this.path = options.path || "./";
 
         /**
          * Table name
          */
-        this.tableName = "JSON";
+        this.tableName = options.table || "JSON";
 
+        if (!options.database && !fs.existsSync(this.path)) fs.mkdirSync(this.path)
 
         /**
          * The SQLite3 database.
          */
         Object.defineProperties(this, {
             _database: {
-                value: new SQLite(this.name),
+                value: options.database || new SQLite(databaseFile, options),
                 writable: true,
                 enumerable: false
             },
         });
 
+        if (options.useWalMode === true) this.database.pragma("journal_mode = wal");
 
         this.prepareTable();
     }
 
     /**
-     * Prepares a table
+     * Prepares a tabe
      * @param {string} [name] The table name
      */
     prepareTable(name = this.tableName) {
@@ -47,7 +51,7 @@ class Database {
     }
 
     /**
-     * Returns the database manager
+     * Returns the SQLite3-Database Manager
      * @type {SQLite.Database}
      */
     get database() {
@@ -78,14 +82,14 @@ class Database {
         return eval(x);
     }
     /**
-     * Returns array of this table
+     * Returns an array of this table
      */
     array() {
         return [...this];
     }
 
     /**
-     * Returns database file size in bytes
+     * Returns the database file size in bytes
      */
     size() {
         try {
@@ -96,7 +100,7 @@ class Database {
     }
 
     /**
-     * Deletes everything in the database
+     * Delete all data in the database
      */
     deleteAll(options = {}) {
         this.prepareTable(options.table || this.tableName);
@@ -104,7 +108,7 @@ class Database {
     }
 
     /**
-     * Creates new instance of this database with specified table
+     * Creates new instance of this database with the specified table
      * @param {string} name Table name
      */
     createTable(name = "JSON") {
@@ -155,7 +159,7 @@ class Database {
     }
 
     /**
-     * Set or re-writes data in this database
+     * Set or re-writes data in this database key
      * @param {string} key Key of the data
      * @param {any} value Value to store
      * @param {object} options Options
@@ -736,6 +740,17 @@ class Database {
         })
 
         return arr;
+    }
+
+    flat() {
+        const { tables } = this.tables();
+
+        const data = [];
+        for (const table of tables) {
+            data.push(this.all({table}));
+        }
+
+        return Array.prototype.flat.call(data)
     }
 
 }
