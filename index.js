@@ -1,11 +1,16 @@
-// Thank you for using @inplexdev/quick.db! This is a database package that are similar to Quick.db! Credits to the original creator.
 
-// Any problem? Check out: https://discord.gg/78RyqJK
+/**
+ * Thank You For Using Xen.db!
+ * 
+ * This is an Easy-To-Use SQLite3 Database Designed Persistently For Beginners & Advanced Developer.
+ * For Issues, Please Check Out: https://github.com/NotMarx/Xen.db/issues
+ */
 
 module.exports = {
-    Database: require("./Source/Database"),
-    Static: require("./Source/Static"),
-    Util: require("./Source/Util"),
+    Database: require("./src/Database"),
+    Static: require("./src/Static"),
+    Util: require("./src/Util"),
     version: require("./package.json").version
 }
 
+// Documentation Will Be Release Soon™!

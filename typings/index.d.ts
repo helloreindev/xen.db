@@ -1,12 +1,18 @@
 import SQLite from "better-sqlite3";
-/**
- * An Easy-To-Use SQLite3 Database. Made By: NotMarx (<notmarx.tech@gmail.com>)
- */
+
+
 declare module "xen.db" {
 
     export interface ParsedKey {
         id?: string;
         target?: string;
+    }
+
+    export interface DatabaseOptions extends SQLite.Options {
+        path?: string;
+        table?: string;
+        database?: SQLite.Database;
+        useWalMode?: boolean;
     }
 
     export class Util {
@@ -27,14 +33,18 @@ declare module "xen.db" {
     export type Reducer = (previousValue: DataSet, currentValue: DataSet, currentIndex: number, array: DataSet[]) => any;
 
     export class Database {
+        databaseFile: string;
+        path: string;
+        table: string;
 
-        constructor();
+        constructor(databaseFile?: string, options?: DatabaseOptions);
 
         public [Symbol.iterator](): IterableIterator<DataSet>;
 
         public get database(): SQLite.Database;
         public get rowCount(): number;
 
+        
         public prepareTable(name: string): void;
         public eval(x: any): any;
         public array(): DataSet[];
@@ -89,9 +99,10 @@ declare module "xen.db" {
         
         public use(database: SQLite.Database | Database): void;
         public allTableArray(): { id: number; table: string; data: DataSet[] }[];
+        public flat(): DataSet[]
     }
 
-    export function static(): Database;
+    export function static(databaseFile?: string, path?: string, table?: string): Database;
 
     export const version: string;
 }
