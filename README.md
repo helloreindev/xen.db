@@ -114,6 +114,20 @@ console.log(tables)
 
 ---
 
+# Why Xen.db?
+
+- **Speedy**
+- **Lightweight**
+- **Consistent**
+- **Easy-To-Use**
+- **Up-To-Date**
+- **Customizable**
+- **Persistent Database**
+
+Yet **Xen.db** Just Released, There Are Still Much More Things We'll Improve. If You Feel Wanting To Support Our Work, Mind Making A [Pull Requests](https://github.com/NotMarx/Xen.db/pulls)!
+
+---
+
 # Installation
 
 If you're having some troubles installing this, please follow this [Troubleshooting Guide](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
