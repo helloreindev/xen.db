@@ -13,9 +13,6 @@
 - **100% Based** - Key Value Based.
 - **Persistent Database** - Value Will Not Lost When On Retstarting Session.
 - **Free-To-Use** - Not Needed To Set Up A SQL Database Server! All Data Is Stored Locally In The Same Project.
-- **Best Friends** - Supports Your Existing [Quick.db](https://www.npmjs.com/package/quick.db) `json.sqlite` Database.
-- **Free Vehicles** - Easily Switch/Migrate Library Between [Xen.db](https://www.npmjs.com/package/xen.db) & [Quick.db](https://www.npmjs.com/package/quick.db) Library If You're Using `json.sqlite` File As Database. 
-- **Work Together** - Support Various Of Supported Library Such As Above.
 - **Custom Database File** - Create Your Own Custom Database File And Not Just `json.sqlite`! With This, You Can Create More Than 1 Database File!!
 
 ---
@@ -111,6 +108,20 @@ const tables = db.tables()
 console.log(tables)
 
 ```
+
+---
+
+# Why Xen.db?
+
+- **Speedy**
+- **Lightweight**
+- **Consistent**
+- **Easy-To-Use**
+- **Up-To-Date**
+- **Customizable**
+- **Persistent Database**
+
+Yet **Xen.db** Just Released, There Are Still Much More Things We'll Improve. If You Feel Wanting To Support Our Work, Mind Making A [Pull Requests](https://github.com/NotMarx/Xen.db/pulls)!
 
 ---
 
