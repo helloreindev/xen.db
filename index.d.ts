@@ -102,7 +102,7 @@ declare module "xen.db" {
         public flat(): DataSet[]
     }
 
-    export function static(databaseFile?: string, path?: string, table?: string): Database;
+    export function Static(databaseFile?: string, path?: string, table?: string): Database;
 
     export const version: string;
 }
