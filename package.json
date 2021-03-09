@@ -1,7 +1,7 @@
 {
   "name": "xen.db",
-  "version": "2.0.5",
-  "description": "A SQLite Database. Easy-To-Use For Beginners.",
+  "version": "2.0.6",
+  "description": "A SQLite Database. Easy-To-Use For Beginners & Persistent Database.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

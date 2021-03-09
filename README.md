@@ -147,7 +147,7 @@ If you're having some troubles installing this, please follow this [Troubleshoot
 
 # Documentation
 
-- Soon!
+- Please [Click Here](https://docs-xen-db.gitbook.io) For **Xen.db** Documentation!
 
 ---
 
