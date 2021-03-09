@@ -2,30 +2,30 @@
 
 ## Xen.db Method
 
-- [(method) Database.all(options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasealloptions)
-- [(method) Database.fetchAll(options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasefetchalloptions)
-- [(method) Database.add(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databaseaddkey-numbers-options)
-- [(method) Database.subtract(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasesubtractkey-numbers-options)
-- [(method) Database.multiply(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasemultiplykey-numbers-options)
-- [(method) Database.divide(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasedividekey-numbers-options)
-- [(method) Database.delete(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasedividekey-numbers-options)
-- [(method) Database.fetch(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasefetchkey-options)
-- [(method) Database.get(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasegetkey-options)
-- [(method) Database.set(key, value, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasesetkey-value-options)
-- [(method) Database.has(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasehaskey-options)
-- [(method) Database.type(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasetypekey-options)
-- [(method) Database.push(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasepushkey-value-options)
-- [(method) Database.pull(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasepullkey-value-options)
-- [(method) Database.remove(key, value[])](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databaseremovekey-value-options)
-- [(method) Database.fetchOne(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasefetchonekey-value-options)
-- [(method) Database.getOne(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasegetonekey-value-options)
-- [(method) Database.createTable(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasecreatetablekey-options)
+- [(method) Database.all(options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasealloptions)
+- [(method) Database.fetchAll(options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchalloptions)
+- [(method) Database.add(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseaddkey-numbers-options)
+- [(method) Database.subtract(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasesubtractkey-numbers-options)
+- [(method) Database.multiply(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasemultiplykey-numbers-options)
+- [(method) Database.divide(key, numbers, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasedividekey-numbers-options)
+- [(method) Database.delete(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasedividekey-numbers-options)
+- [(method) Database.fetch(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchkey-options)
+- [(method) Database.get(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasegetkey-options)
+- [(method) Database.set(key, value, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasesetkey-value-options)
+- [(method) Database.has(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasehaskey-options)
+- [(method) Database.type(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasetypekey-options)
+- [(method) Database.push(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasepushkey-value-options)
+- [(method) Database.pull(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasepullkey-value-options)
+- [(method) Database.remove(key, value[])](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseremovekey-value-options)
+- [(method) Database.fetchOne(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchonekey-value-options)
+- [(method) Database.getOne(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasegetonekey-value-options)
+- [(method) Database.createTable(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasecreatetablekey-options)
 
 ---
 
 ### (method) Database.all(options)
 
-This method returns used (or specific) table as array. Alias of [`(method) Database.fetchAll()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasefetchalloptions)
+This method returns used (or specific) table as array. Alias of [`(method) Database.fetchAll()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchalloptions)
 
 ```js
 
@@ -41,7 +41,7 @@ db.all();
 
 ### (method) Database.fetchAll(options)
 
-This method returns used (or specific) table as array. Alias of [`(method) Database.all()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasealloptions)
+This method returns used (or specific) table as array. Alias of [`(method) Database.all()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasealloptions)
 
 ```js
 
@@ -151,7 +151,7 @@ db.delete("Key");
 
 ### (method) Database.fetch(key, options)
 
-This method fetch/get all of the value(s) in a specific key in the database. Alias of [`(method) Database.get()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasegetkey-options)
+This method fetch/get all of the value(s) in a specific key in the database. Alias of [`(method) Database.get()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasegetkey-options)
 
 ```js
 
@@ -167,7 +167,7 @@ db.fetch("Key");
 
 ### (method) Database.get(key, options)
 
-This method fetch/get all of the value(s) in a specific key in the database. Alias of [`(method) Database.fetch()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasefetchkey-options)
+This method fetch/get all of the value(s) in a specific key in the database. Alias of [`(method) Database.fetch()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchkey-options)
 ```js
 
 const { Database } = require("xen.db");
@@ -258,7 +258,7 @@ db.push("Key", ["Hello World!", "The World Say Hello!"]);
 
 ### (method) Database.pull(key, value[], options)
 
-This method pull/extract value(s) from a key in the database. Alias of [`(method) Database.remove()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databaseremovekey-value-options)
+This method pull/extract value(s) from a key in the database. Alias of [`(method) Database.remove()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseremovekey-value-options)
 
 ```js
 
@@ -290,7 +290,7 @@ db.remove("Key", "Hello World!");
 
 ### (method) Database.fetchOne(key, value[], options)
 
-This method fetch/get specific value(s) from a key in the database. Alias of [`(method) Database.getOne()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasegetonekey-value-options)
+This method fetch/get specific value(s) from a key in the database. Alias of [`(method) Database.getOne()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasegetonekey-value-options)
 
 ```js
 
@@ -306,7 +306,7 @@ db.fetchOne("Key", "Hello World!");
 
 ### (method) Database.getOne(key, value[], options)
 
-This method fetch/get specific value(s) from a key in the database. Alias of [`(method) Database.fetchOne()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/Documentation.md#method-databasefetchonekey-value-options)
+This method fetch/get specific value(s) from a key in the database. Alias of [`(method) Database.fetchOne()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchonekey-value-options)
 
 ```js
 
@@ -341,3 +341,5 @@ myKey.fetch("Key");
 // -> "The World Say Hello!"
 
 ```
+
+---

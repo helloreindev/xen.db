@@ -13,4 +13,5 @@ module.exports = {
     version: require("./package.json").version
 }
 
-// Documentation Will Be Release Soon™!
+// Documentation: https://docs-xen-db.gitbook.io
+// Discord Support Server: https://discord.gg/78RyqJK
