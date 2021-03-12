@@ -16,7 +16,7 @@
 - [(method) Database.type(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasetypekey-options)
 - [(method) Database.push(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasepushkey-value-options)
 - [(method) Database.pull(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasepullkey-value-options)
-- [(method) Database.remove(key, value[])](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseremovekey-value-options)
+- [(method) Database.extract(key, value[])](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseremovekey-value-options)
 - [(method) Database.fetchOne(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasefetchonekey-value-options)
 - [(method) Database.getOne(key, value[], options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasegetonekey-value-options)
 - [(method) Database.createTable(key, options)](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databasecreatetablekey-options)
@@ -258,7 +258,7 @@ db.push("Key", ["Hello World!", "The World Say Hello!"]);
 
 ### (method) Database.pull(key, value[], options)
 
-This method pull/extract value(s) from a key in the database. Alias of [`(method) Database.remove()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseremovekey-value-options)
+This method pull/extract value(s) from a key in the database. Alias of [`(method) Database.extract()`](https://github.com/NotMarx/Xen.db/blob/master/Docs/README.md#method-databaseremovekey-value-options)
 
 ```js
 
@@ -272,7 +272,7 @@ db.pull("Key", "Hello World!");
 
 ---
 
-### (method) Database.remove(key, value[], options)
+### (method) Database.extract(key, value[], options)
 
 This method pull/extract value(s) from a key in the database. Alias of [`(method) Database.pull()`]
 
@@ -281,7 +281,7 @@ This method pull/extract value(s) from a key in the database. Alias of [`(method
 const { Database } = require("xen.db");
 const db = new Database();
 
-db.remove("Key", "Hello World!");
+db.extract("Key", "Hello World!");
 // -> ["The World Say Hello!"]
 
 ```
