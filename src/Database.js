@@ -352,7 +352,7 @@ class Database {
      * @param {any} value The value that wanted to be extracted
      * @param {object} options Options
      */
-    remove(key, value, options = {}) {
+    extract(key, value, options = {}) {
         return this.pull(key, value, options)
     }
 
