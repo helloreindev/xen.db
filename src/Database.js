@@ -136,17 +136,16 @@ class Database {
         // make sure to create table
         this.prepareTable(table);
 
-        const data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        let data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
         if (!data || data.json === "{}") return null;
 
-        let parsed = JSON.parse(data.json);
-        try { parsed = JSON.parse(parsed) } catch { }
+        data = JSON.parse(data.json);
 
-        if (typeof parsed === "object" && target) {
-            parsed = lodash.get(parsed, target);
+        if (typeof data === "object" && target) {
+            data = lodash.get(data, target);
         }
 
-        return parsed;
+        return data;
     }
 
     /**
