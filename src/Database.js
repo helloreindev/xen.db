@@ -133,7 +133,6 @@ class Database {
 
         if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
 
-        // make sure to create table
         this.prepareTable(table);
 
         let data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
@@ -283,18 +282,15 @@ class Database {
         this.prepareTable(table);
 
         const statement = this.database.prepare(`SELECT * FROM ${table} WHERE ID IS NOT NULL`);
-        const res = [];
+        let res = [];
 
         for (const row of statement.iterate()) {
             if (options.length && typeof options.length === "number" && options.length > 0 && options.length === res.length) break;
 
             try {
-                let raw = JSON.parse(row.json);
-                try { raw = JSON.parse(raw) } catch { }
-
                 res.push({
                     ID: row.ID,
-                    data: raw
+                    Data: JSON.parse(row.json)
                 });
             } catch { }
         }
