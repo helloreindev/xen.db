@@ -140,7 +140,7 @@ If You Have Trouble Installing **Xen.db**. Please Follow This [Troubleshooting G
 
 ##### Windows Platform
 
-1. **Open**: Any Terminal (Eg. PowerGhell, Command Prompt)
+1. **Open**: Any Terminal (Eg. PowerShell, Command Prompt)
 2. **Run**: `npm i xen.db`
 
 **Note:** Windows Users Might Need To Do The Following [Additional Steps](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
