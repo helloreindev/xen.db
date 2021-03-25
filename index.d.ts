@@ -6,27 +6,62 @@ import SQLite from "better-sqlite3";
 
 declare module "xen.db" {
 
+    /**
+     * Parse A Key
+     */
     export interface ParsedKey {
         id?: string;
         target?: string;
     }
 
+    /**
+     * The Database's Options
+     */
     export interface DatabaseOptions extends SQLite.Options {
+        /**
+         * The Path Of The Database
+         */
         path?: string;
+
+        /**
+         * The Database Table
+         */
         table?: string;
+
+        /**
+         * SQLite Database Itself
+         */
         database?: SQLite.Database;
+
+        /**
+         * Wal Mode
+         */
         useWalMode?: boolean;
     }
 
+    /**
+     * Xen.db Util Class & Internal Method Used To Parse Key
+     */
     export class Util {
+
+        /**
+         * Internal Method Used To Parse Key
+         * @param key Key To Be Parsed
+         */
         public static parseKey(key: string): ParsedKey;
     }
 
+    /**
+     * Data Sets
+     */
     export interface DataSet {
         ID: string;
-        data: any;
+        Data: any;
     }
 
+    /**
+     * Options To Be Added To The Methods
+     */
     export interface Options {
         table?: string;
         limit?: number;
@@ -35,15 +70,29 @@ declare module "xen.db" {
     export type Callbackfn<T> = (value: DataSet, index: number, array: DataSet[]) => T;
     export type Reducer = (previousValue: DataSet, currentValue: DataSet, currentIndex: number, array: DataSet[]) => any;
 
+    /**
+     * The Database Class
+     */
     export class Database {
+        /**
+         * The Database File
+         */
         databaseFile: string;
+
+        /**
+         * The Database Path
+         */
         path: string;
+
+        /**
+         * The Database Table Name
+         */
         tableName: string;
 
         /**
          * The Database Class
          * @param databaseFile Database File Name
-         * @param options DatabaseOptions
+         * @param options Database Options
          */
         constructor(databaseFile?: string, options?: DatabaseOptions);
 
@@ -417,6 +466,9 @@ declare module "xen.db" {
 
     /**
      * Xen.db Versions
+     * ```
+     * console.log(require("xen.db").version);
+     * ```
      */
     export const version: string;
 }

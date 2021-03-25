@@ -47,7 +47,7 @@ class Database {
      * @param {string} [name] The table name
      */
     prepareTable(name = this.tableName) {
-        this.database.prepare(`CREATE TABLE IF NOT EXISTS ${name} (ID TEXT, json TEXT)`).run();
+         this.database.prepare(`CREATE TABLE IF NOT EXISTS ${name} (ID TEXT, json TEXT)`).run();
     }
 
     /**
@@ -133,20 +133,18 @@ class Database {
 
         if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
 
-        // make sure to create table
         this.prepareTable(table);
 
-        const data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
-        if (!data || data.json === "{}") return null;
+        let fetched = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        if (!fetched || fetched.json === "{}") return null;
 
-        let parsed = JSON.parse(data.json);
-        try { parsed = JSON.parse(parsed) } catch { }
+        fetched = JSON.parse(fetched.json);
 
-        if (typeof parsed === "object" && target) {
-            parsed = lodash.get(parsed, target);
+        if (typeof fetched === "object" && target) {
+            fetched = lodash.get(fetched, target);
         }
 
-        return parsed;
+        return fetched;
     }
 
     /**
@@ -176,17 +174,16 @@ class Database {
 
         this.prepareTable(table);
 
-        let existing = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
-        if (!existing) {
+        let data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        if (!data) {
             this.database.prepare(`INSERT INTO ${table} (ID,json) VALUES (?,?)`).run(id, '{}');
-            existing = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+            data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
         }
 
-        existing = JSON.parse(existing.json);
-        try { existing = JSON.parse(existing) } catch { }
+        data = JSON.parse(data.json);
 
-        if (typeof existing === "object" && target) {
-            value = lodash.set(existing, target, value);
+        if (typeof data === "object" && target) {
+            value = lodash.set(data, target, value);
         } else if (target) throw new TypeError("Cannot Use Target With Non-Object. Need Help? Check: discord.gg/78RyqJK");
 
         value = JSON.stringify(value);
@@ -284,18 +281,15 @@ class Database {
         this.prepareTable(table);
 
         const statement = this.database.prepare(`SELECT * FROM ${table} WHERE ID IS NOT NULL`);
-        const res = [];
+        let res = [];
 
         for (const row of statement.iterate()) {
             if (options.length && typeof options.length === "number" && options.length > 0 && options.length === res.length) break;
 
             try {
-                let raw = JSON.parse(row.json);
-                try { raw = JSON.parse(raw) } catch { }
-
                 res.push({
                     ID: row.ID,
-                    data: raw
+                    Data: JSON.parse(row.json)
                 });
             } catch { }
         }
@@ -306,7 +300,7 @@ class Database {
     /**
      * Push an array type value into the database key
      * @param {string} key Key of the data 
-     * @param {any} value Value to store (or push into the jey)
+     * @param {any} value Value to store (or push into the key)
      * @param {object} options Options
      */
     push(key, value, options = {}) {
@@ -445,7 +439,7 @@ class Database {
     }
 
     /**
-     * Subtract numbers to a key in the database
+     * Subtract numbers to a key from the database
      * @param {string} key Key of the data
      * @param {number} value Any numerical value
      * @param {object} options Options
