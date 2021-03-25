@@ -1,19 +1,20 @@
 # Xen.db
 
-[![downloadsBadge](https://img.shields.io/npm/dt/xen.db?style=for-the-badge)](https://www.npmjs.com/package/xen.db)
-[![versionBadge](https://img.shields.io/npm/v/xen.db?style=for-the-badge)](https://www.npmjs.com/package/xen.db)
+[![downloadsBadge](https://img.shields.io/npm/dt/xen.db?color=7289DA&label=Total%20Downloads&logo=Xen.db&style=for-the-badge)](https://www.npmjs.com/package/xen.db)
+[![versionBadge](https://img.shields.io/npm/v/xen.db?color=7289DA&label=Version&logo=Xen.db&style=for-the-badge)](https://www.npmjs.com/package/xen.db)
+[![docs](https://img.shields.io/badge/Documentation-Click%20here-7289DA?style=for-the-badge)](https://xen-db.gitbook.io)
 
-[Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data** Persistently In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
+[Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data Persistently** In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
 
 ### Features
 
-- **Powerful** - Supports **Non-Xen.db** API.
+- **Powerful** - Supports **Non-Xen.db** Method.
 - **Customizable** - More Utility Method.
 - **Family-Friendly** - Simple & Easy-To-Use For Beginners.
 - **100% Based** - Key Value Based.
 - **Persistent Database** - Value Will Not Lost When On Retstarting Session.
 - **Free-To-Use** - Not Needed To Set Up A SQL Database Server! All Data Is Stored Locally In The Same Project.
-- **Custom Database File** - Create Your Own Custom Database File And Not Just `json.sqlite`! With This, You Can Create More Than 1 Database File!!
+- **Custom Database File** - **Xen.db** Allow Users To Create Custom Database File And Its Path!
 
 ---
 
@@ -22,30 +23,31 @@
 Coding A Sandbox (Demo)
 
 ```js
-const { Database } = require("xen.db") 
-const db = new Database() 
+
+const { Database } = require("xen.db");
+const db = new Database(); 
 
 // Setting an object in the database:
-db.set('userInfo', { difficulty: 'Easy' })
+db.set('userInfo', { difficulty: 'Easy' });
 // -> { difficulty: 'Easy' }
  
 // Pushing an element to an array (that doesn't exist yet) in an object:
-db.push('userInfo.items', 'Sword')
+db.push('userInfo.items', 'Sword');
 // -> { difficulty: 'Easy', items: ['Sword'] }
  
 // Adding to a number (that doesn't exist yet) in an object:
-db.add('userInfo.balance', 500)
+db.add('userInfo.balance', 500);
 // -> { difficulty: 'Easy', items: ['Sword'], balance: 500 }
  
 // Repeating previous examples:
-db.push('userInfo.items', 'Watch')
+db.push('userInfo.items', 'Watch');
 // -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 500 }
-db.add('userInfo.balance', 500)
+db.add('userInfo.balance', 500);
 // -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 1000 }
  
 // Fetching individual properties
-db.get('userInfo.balance') // -> 1000
-db.get('userInfo.items') // ['Sword', 'Watch']
+db.get('userInfo.balance'); // -> 1000
+db.get('userInfo.items'); // ['Sword', 'Watch']
 
 ```
 
@@ -53,31 +55,31 @@ db.get('userInfo.items') // ['Sword', 'Watch']
 
 ```js
 
-const { Database } = require("xen.db")
-const db = new Database("xen.db", { path: "./", table: "JSON"})
-// Creates a Database File called "xen.db" instead of "json.sqlite"
+const { Database } = require("xen.db");
+const db = new Database("Database/xen.db", { path: "Database", table: "JSON"});
+// Creates a Database File called "xen.db" inside a "Database" folder instead of "json.sqlite"
 
 // Setting an object in the database:
-db.set('userInfo', { difficulty: 'Easy' })
+db.set('userInfo', { difficulty: 'Easy' });
 // -> { difficulty: 'Easy' }
  
 // Pushing an element to an array (that doesn't exist yet) in an object:
-db.push('userInfo.items', 'Sword')
+db.push('userInfo.items', 'Sword');
 // -> { difficulty: 'Easy', items: ['Sword'] }
  
 // Adding to a number (that doesn't exist yet) in an object:
-db.add('userInfo.balance', 500)
+db.add('userInfo.balance', 500);
 // -> { difficulty: 'Easy', items: ['Sword'], balance: 500 }
  
 // Repeating previous examples:
-db.push('userInfo.items', 'Watch')
+db.push('userInfo.items', 'Watch');
 // -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 500 }
-db.add('userInfo.balance', 500)
+db.add('userInfo.balance', 500);
 // -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 1000 }
  
 // Fetching individual properties
-db.get('userInfo.balance') // -> 1000
-db.get('userInfo.items') // ['Sword', 'Watch']
+db.get('userInfo.balance'); // -> 1000
+db.get('userInfo.items'); // ['Sword', 'Watch']
 
 ```
 
@@ -87,13 +89,17 @@ db.get('userInfo.items') // ['Sword', 'Watch']
 
 ```js
 
-const table = db.createTable("MyTable")
+// Creates New Table
+const table = db.createTable("MyTable");
 
-db.set("Inv", "Sword")
-table.set("Inv", 123)
+db.set("Inv", "Sword");
+table.set("Inv", "Diamond");
 
-db.get("Inv") // Returns "Sword"
-table.get("Inv") // Returns "123"
+db.get("Inv");
+// -> Sword
+
+table.get("Inv");
+// -> Diamond
 
 ```
 
@@ -103,9 +109,9 @@ table.get("Inv") // Returns "123"
 
 ```js
 
-const tables = db.tables()
+const tables = db.tables();
 
-console.log(tables)
+console.log(tables);
 
 ```
 
@@ -119,39 +125,42 @@ console.log(tables)
 - **Easy-To-Use**
 - **Up-To-Date**
 - **Customizable**
+- **Key & Value Based**
 - **Persistent Database**
 
-Yet **Xen.db** Just Released, There Are Still Much More Things We'll Improve. If You Feel Wanting To Support Our Work, Mind Making A [Pull Requests](https://github.com/NotMarx/Xen.db/pulls)!
+We've Over ***1,000+*** Downloads On **NPM**!   
+
+Check Out Our [GitHub](https://github.com/NotMarx/Xen.db) For Contributions!
 
 ---
 
 # Installation
 
-If you're having some troubles installing this, please follow this [Troubleshooting Guide](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
+If You Have Trouble Installing **Xen.db**. Please Follow This [Troubleshooting Guide](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
 
-##### Linux & Windows Platform
+##### Windows Platform
 
-- `npm i xen.db`
+1. **Open**: Any Terminal (Eg. PowerGhell, Command Prompt)
+2. **Run**: `npm i xen.db`
 
-**Note:** Windows platform users might need to do additional steps [Here](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
-
+**Note:** Windows Users Might Need To Do The Following [Additional Steps](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
 
 ##### Mac Platform
 
 1. **Install**: XCode
-2. **Run**: `npm i -g node-gyp` in your console/terminal
-3. **Run**: `node-gyp --python /path/to/python2.7` (Skip this step if you didn't install Python 3.x)
+2. **Run**: `npm i -g node-gyp` In Your Console Or Terminal
+3. **Run**: `node-gyp --python /path/to/python2.7` 
 4. **Finally, Run**: `npm i xen.db`
 
 ---
 
 # Documentation
 
-- Please [Click Here](https://docs-xen-db.gitbook.io) For **Xen.db** Documentation!
+- Please [Click Here](https://xen-db.gitbook.io) For **Xen.db** Documentation!
 
 ---
 
-- If You Need Help, Please Join Our [Support Server](https://discord.gg/78RyqJK)
+- If You Need Help, Please Join Our [Support Server](https://discord.gg/78RyqJK) And Ask In [#xen-db](https://discord.com/channels/750546490614743150/756354697077719100) Channel.
 
 
 
