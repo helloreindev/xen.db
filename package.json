@@ -1,9 +1,8 @@
 {
   "name": "xen.db",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A SQLite3 Database. Easy-To-Use For Beginners & Persistent Database.",
   "main": "index.js",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NotMarx/Xen.db.git"
@@ -25,6 +24,6 @@
   "homepage": "https://xen-db.gitbook.io",
   "dependencies": {
     "better-sqlite3": "^7.1.2",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.21"
   }
 }

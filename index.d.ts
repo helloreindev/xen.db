@@ -55,7 +55,14 @@ declare module "xen.db" {
      * Data Sets
      */
     export interface DataSet {
+        /**
+         * The Key's ID
+         */
         ID: string;
+
+        /**
+         * Value Data
+         */
         Data: any;
     }
 
@@ -63,7 +70,14 @@ declare module "xen.db" {
      * Options To Be Added To The Methods
      */
     export interface Options {
+        /**
+         * The Database's Table Where Value Need To Be Stored In A Specific Key
+         */
         table?: string;
+
+        /**
+         * The Amount Of Items That Wanted To Be Execute A Function On
+         */
         limit?: number;
     }
 

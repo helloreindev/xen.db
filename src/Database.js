@@ -727,9 +727,9 @@ class Database {
 
         tables.forEach((table, index) => {
             arr.push({
-                id: index,
-                table: table,
-                data: this.all({ table: table })
+                ID: index,
+                Table: table,
+                Data: this.all({ table: table })
             })
         })
 
