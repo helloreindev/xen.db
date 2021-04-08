@@ -467,7 +467,7 @@ declare module "xen.db" {
         /**
          * Returns All Database Table(s) As An Array
          */
-        public allTableArray(): { id: number; table: string; data: DataSet[] }[];
+        public allTableArray(): { ID: number; Table: string; Data: DataSet[] }[];
         public flat(): DataSet[];
     }
     /**
