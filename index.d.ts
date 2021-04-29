@@ -1,7 +1,7 @@
 import SQLite from "better-sqlite3";
 
 /**
- * Xen.db Definitions & Typings By: Hery & NotMarx (<notmarx.tech@gmail.com>)
+ * Xen.db Definitions & Typings By: NotMarx (<notmarx.tech@gmail.com>)
  */
 
 declare module "xen.db" {
