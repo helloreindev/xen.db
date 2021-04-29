@@ -12,7 +12,7 @@
 - **Customizable** - More Utility Method.
 - **Family-Friendly** - Simple & Easy-To-Use For Beginners.
 - **100% Based** - Key Value Based.
-- **Persistent Database** - Value Will Not Lost When On Retstarting Session.
+- **Persistent Database** - Value Will Not Lost During Retstarting Session.
 - **Free-To-Use** - Not Needed To Set Up A SQL Database Server! All Data Is Stored Locally In The Same Project.
 - **Custom Database File** - **Xen.db** Allow Users To Create Custom Database File And Its Path!
 

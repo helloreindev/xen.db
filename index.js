@@ -4,6 +4,8 @@
  * 
  * Orignial Creator: NotMarx <notmarx.tech@gmail.com>
  * 
+ * A NodeJS SQLite3 Persistent Database
+ * 
  * This is an Open-Sourced Easy-To-Use SQLite3 Database Designed Persistently For Beginners & Advanced Developer.
  * All Data Are Stored Locally In A File In The Same Project.
  * 
