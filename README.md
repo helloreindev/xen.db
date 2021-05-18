@@ -2,7 +2,7 @@
 
 [![downloadsBadge](https://img.shields.io/npm/dt/xen.db?color=7289DA&label=Total%20Downloads&logo=Xen.db&style=for-the-badge)](https://www.npmjs.com/package/xen.db)
 [![versionBadge](https://img.shields.io/npm/v/xen.db?color=7289DA&label=Version&logo=Xen.db&style=for-the-badge)](https://www.npmjs.com/package/xen.db)
-[![docs](https://img.shields.io/badge/Documentation-Click%20here-7289DA?style=for-the-badge)](https://xen-db.gitbook.io)
+[![docs](https://img.shields.io/badge/Documentation-Click%20here-7289DA?style=for-the-badge)](https://xendb.js.org)
 
 [Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data Persistently** In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
 
@@ -156,7 +156,7 @@ If You Have Trouble Installing **Xen.db**. Please Follow This [Troubleshooting G
 
 # Documentation
 
-- Please [Click Here](https://xen-db.gitbook.io) For **Xen.db** Documentation!
+- Please [Click Here](https://xendb.js.org) For **Xen.db** Documentation!
 
 ---
 
