@@ -17,5 +17,5 @@
     version: require("./package.json").version
 }
 
-// Documentation: https://xen-db.gitbook.io
+// Documentation: https://xendb.js.org
 // Discord Support Server: https://discord.gg/78RyqJK
