@@ -60,6 +60,7 @@ class Database {
 
     /**
      * Returns number of rows count
+     * @type {number}
      */
     get rowCount() {
         const res = this.database.prepare(`SELECT count(*) FROM '${this.tableName}';`).get();
@@ -90,6 +91,7 @@ class Database {
 
     /**
      * Returns the database file size in bytes
+     * @type {number}
      */
     size() {
         try {
