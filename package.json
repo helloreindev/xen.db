@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/NotMarx/Xen.db/issues"
   },
-  "homepage": "https://xen-db.gitbook.io",
+  "homepage": "https://xendb.js.org",
   "dependencies": {
     "better-sqlite3": "^7.1.2",
     "lodash": "^4.17.21"
