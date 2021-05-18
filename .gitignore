@@ -3,3 +3,5 @@ package-lock.json
 json.sqlite
 xen.db
 Specs
+docs
+.jsdoc.json
