@@ -1,7 +1,7 @@
 import SQLite from "better-sqlite3";
 
 /**
- * Xen.db Definitions & Typings By: Hery & NotMarx (<notmarx.tech@gmail.com>)
+ * Xen.db Definitions & Typings By: Reinhardt (<notmarx.tech@gmail.com>)
  */
 
 declare module "xen.db" {
@@ -34,7 +34,7 @@ declare module "xen.db" {
         database?: SQLite.Database;
 
         /**
-         * Wal Mode
+         * Whether To Use Wal Mode
          */
         useWalMode?: boolean;
     }
@@ -484,5 +484,5 @@ declare module "xen.db" {
      * console.log(require("xen.db").version);
      * ```
      */
-    export const version: string;
+    export const VERSION: string;
 }
