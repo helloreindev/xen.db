@@ -119,11 +119,9 @@ console.log(tables);
 
 # Why Xen.db?
 
-- **Speedy**
 - **Lightweight**
 - **Consistent**
 - **Easy-To-Use**
-- **Up-To-Date**
 - **Customizable**
 - **Key & Value Based**
 - **Persistent Database**
