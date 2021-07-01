@@ -1,6 +1,6 @@
 {
   "name": "xen.db",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A SQLite3 Database. Easy-To-Use For Beginners & Persistent Database.",
   "main": "index.js",
   "repository": {
@@ -16,7 +16,7 @@
     "xen.db",
     "sqlite3"
   ],
-  "author": "NotMarx",
+  "author": "reinhardt",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/NotMarx/Xen.db/issues"
