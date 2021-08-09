@@ -1,9 +1,10 @@
 const SQLite = require("better-sqlite3");
+const { EventEmitter } = require("events");
 const fs = require("fs");
 const lodash = require("lodash");
 const Util = require("./Util");
 
-class Database {
+class Database extends EventEmitter {
 
     constructor(databaseFile = "json.sqlite", options = {} ) {
 
@@ -40,6 +41,7 @@ class Database {
         if (options.useWalMode === true) this.database.pragma("journal_mode = wal");
 
         this.prepareTable();
+        this.emit("ready");
     }
 
     /**
