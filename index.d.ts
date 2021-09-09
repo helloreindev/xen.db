@@ -1,9 +1,9 @@
 import SQLite from "better-sqlite3";
+import { EventEmitter } from "events";
 
 /**
  * Xen.db Definitions & Typings By: Reinhardt (<notmarx.tech@gmail.com>)
  */
-
 declare module "xen.db" {
 
     /**
@@ -81,13 +81,17 @@ declare module "xen.db" {
         limit?: number;
     }
 
+    export interface DatabaseEvents {
+        ready: [];
+    }
+
     export type Callbackfn<T> = (value: DataSet, index: number, array: DataSet[]) => T;
     export type Reducer = (previousValue: DataSet, currentValue: DataSet, currentIndex: number, array: DataSet[]) => any;
 
     /**
      * The Database Class
      */
-    export class Database {
+    export class Database extends EventEmitter {
         /**
          * The Database File
          */
@@ -237,12 +241,12 @@ declare module "xen.db" {
          */
         public fetchOne(key: string, value: any | any[], options?: Options): any;
 
-         /**
-         * Fetch A Specific Value(s) In A Database's Key
-         * @param key The Database's Key
-         * @param value The Specific Value To Be Fetch
-         * @param options Options
-         */
+        /**
+        * Fetch A Specific Value(s) In A Database's Key
+        * @param key The Database's Key
+        * @param value The Specific Value To Be Fetch
+        * @param options Options
+        */
         public getOne(key: string, value: any | any[], options?: Options): any;
 
         /**
@@ -469,6 +473,30 @@ declare module "xen.db" {
          */
         public allTableArray(): { ID: number; Table: string; Data: DataSet[] }[];
         public flat(): DataSet[];
+
+        public on<K extends keyof DatabaseEvents>(event: K, listener: (...args: DatabaseEvents[K]) => void): this;
+        public on<S extends string | symbol>(
+            event: Exclude<S, keyof DatabaseEvents>,
+            listener: (...args: any[]) => void,
+        ): this;
+
+        public once<K extends keyof DatabaseEvents>(event: K, listener: (...args: DatabaseEvents[K]) => void): this;
+        public once<S extends string | symbol>(
+            event: Exclude<S, keyof DatabaseEvents>,
+            listener: (...args: any[]) => void,
+        ): this;
+
+        public emit<K extends keyof DatabaseEvents>(event: K, ...args: DatabaseEvents[K]): boolean;
+        public emit<S extends string | symbol>(event: Exclude<S, keyof DatabaseEvents>, ...args: any[]): boolean;
+
+        public off<K extends keyof DatabaseEvents>(event: K, listener: (...args: DatabaseEvents[K]) => void): this;
+        public off<S extends string | symbol>(
+            event: Exclude<S, keyof DatabaseEvents>,
+            listener: (...args: any[]) => void,
+        ): this;
+
+        public removeAllListeners<K extends keyof DatabaseEvents>(event?: K): this;
+        public removeAllListeners<S extends string | symbol>(event?: Exclude<S, keyof DatabaseEvents>): this;
     }
     /**
      * Xen.db Statics

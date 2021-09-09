@@ -4,7 +4,7 @@
 [![versionBadge](https://img.shields.io/npm/v/xen.db?color=7289DA&label=Version&logo=Xen.db&style=for-the-badge)](https://www.npmjs.com/package/xen.db)
 [![docs](https://img.shields.io/badge/Documentation-Click%20here-7289DA?style=for-the-badge)](https://xendb.js.org)
 
-[Xen.db](https://www.npmjs.com/package/xen.db) Is An Open-Sourced Database Package Designed To Be Easy-To-Use & Friendly For Beginners. This Package Meant To Provide Easy Way For Users To **Access & Store Various Data Persistently** In A Database Via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
+[Xen.db](https://www.npmjs.com/package/xen.db) is an open-sourced SQLite3 Database designed to be easy-to-use and beginner friendly. This Database access and store various of data persistently via [BetterSQLite3](https://github.com/JoshuaWise/better-sqlite3).
 
 ### Features
 
@@ -126,7 +126,7 @@ console.log(tables);
 - **Key & Value Based**
 - **Persistent Database**
 
-We've Over ***1,000+*** Downloads On **NPM**!   
+We've Over ***2,000+*** Downloads On **NPM**!   
 
 Check Out Our [GitHub](https://github.com/NotMarx/Xen.db) For Contributions!
 
@@ -140,6 +140,8 @@ If You Have Trouble Installing **Xen.db**. Please Follow This [Troubleshooting G
 
 1. **Open**: Any Terminal (Eg. PowerShell, Command Prompt)
 2. **Run**: `npm i xen.db`
+
+- If you want to be more updated, you can install the dev version instead: `npm i NotMarx/xen.db#dev`
 
 **Note:** Windows Users Might Need To Do The Following [Additional Steps](https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md).
 
@@ -158,7 +160,7 @@ If You Have Trouble Installing **Xen.db**. Please Follow This [Troubleshooting G
 
 ---
 
-- If You Need Help, Please Join Our [Support Server](https://discord.gg/78RyqJK) And Ask In [#xen-db](https://discord.com/channels/750546490614743150/756354697077719100) Channel.
+- If You Need Help, Please Join Our [Support Server](https://discord.gg/78RyqJK) And Ask In The [#xen-db](https://discord.com/channels/750546490614743150/756354697077719100) Channel.
 
 
 
