@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/NotMarx/xen.db.git"
   },
+  "scripts": {
+    "docs": "docgen --jsdoc jsdoc.json --source src/*.js --custom docs/index.yml --output docs/docs.json",
+    "docs:test": "docgen --jsdoc jsdoc.json --source src/*.js --custom docs/index.yml"
+  },
   "keywords": [
     "db",
     "database",
@@ -27,7 +31,12 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
+    "@devsnowflake/docgen": "devsnowflake/docgen#ts-patch",
     "@types/node": "^16.9.1",
+    "jsdoc-babel": "^0.5.0",
     "ts-node": "^10.2.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.3"
