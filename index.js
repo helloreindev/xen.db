@@ -2,7 +2,7 @@
 /**
  * Thank You For Using Xen.db!
  * 
- * Orignial Creator: NotMarx <notmarx.tech@gmail.com>
+ * Orignial Creator: Reinhardt <notmarx.tech@gmail.com>
  * 
  * A NodeJS SQLite3 Persistent Database
  * 
