@@ -13,9 +13,9 @@
  */
 
  module.exports = {
-    Database: require("./src/Database"),
-    Static: require("./src/Static"),
-    Util: require("./src/Util"),
+    Database: require("./lib/Database"),
+    Static: require("./lib/Static"),
+    Util: require("./lib/Util"),
     VERSION: require("./package.json").version
 }
 
