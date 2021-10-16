@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding meta -->
+    
+    
+    <meta name="author" content="Reinhardt" />
+    
+    <meta name="description" content="XenDB, A NodeJS SQLite3 Database" />
+    
+    
+
+    <!-- Adding external script-->
+    
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous" ></script>
+    
+    
+
+    <!-- Adding external style-->
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+
+    <!-- Adding overlay script-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.min.js"
+      integrity="sha512-5R3ngaUdvyhXkQkIqTf/k+Noq3phjmrqlUQyQYbgfI34Mzcx7vLIIYTy/K1VMHkL33T709kfh5y6R9Xy/Cbt7Q=="
+      crossorigin="anonymous"></script>
+    
+
+    <!-- Adding overlay style-->
+    
+
+
+    <title>
+      Database.js
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-dark.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">XenDB</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><ul><li class="menu-li"><a href='https://discord.gg/78RyqJK' class='discord menu-link' id='discord' target='_blank'>Discord</a></li><li class="menu-li"><a href='https://github.com/NotMarx/xen.db/' class='github menu-link' id='github' target='_blank'>GitHub</a></li></ul><div class="accordion collapsed" id="7138147" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion collapsed child" id=4131570><div class="accordion-heading child"><a href="Database.html">Database</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Database.html#add">add</a></li><li data-type='method'><a href="Database.html#all">all</a></li><li data-type='method'><a href="Database.html#allTableArray">allTableArray</a></li><li data-type='method'><a href="Database.html#array">array</a></li><li data-type='method'><a href="Database.html#createTable">createTable</a></li><li data-type='method'><a href="Database.html#delete">delete</a></li><li data-type='method'><a href="Database.html#deleteAll">deleteAll</a></li><li data-type='method'><a href="Database.html#divide">divide</a></li><li data-type='method'><a href="Database.html#drop">drop</a></li><li data-type='method'><a href="Database.html#endsWith">endsWith</a></li><li data-type='method'><a href="Database.html#eval">eval</a></li><li data-type='method'><a href="Database.html#every">every</a></li><li data-type='method'><a href="Database.html#export">export</a></li><li data-type='method'><a href="Database.html#extract">extract</a></li><li data-type='method'><a href="Database.html#fetch">fetch</a></li><li data-type='method'><a href="Database.html#fetchAll">fetchAll</a></li><li data-type='method'><a href="Database.html#fetchOne">fetchOne</a></li><li data-type='method'><a href="Database.html#filter">filter</a></li><li data-type='method'><a href="Database.html#find">find</a></li><li data-type='method'><a href="Database.html#findIndex">findIndex</a></li><li data-type='method'><a href="Database.html#flatMap">flatMap</a></li><li data-type='method'><a href="Database.html#forEach">forEach</a></li><li data-type='method'><a href="Database.html#get">get</a></li><li data-type='method'><a href="Database.html#getOne">getOne</a></li><li data-type='method'><a href="Database.html#has">has</a></li><li data-type='method'><a href="Database.html#includes">includes</a></li><li data-type='method'><a href="Database.html#indexOf">indexOf</a></li><li data-type='method'><a href="Database.html#init">init</a></li><li data-type='method'><a href="Database.html#keyArray">keyArray</a></li><li data-type='method'><a href="Database.html#map">map</a></li><li data-type='method'><a href="Database.html#modulus">modulus</a></li><li data-type='method'><a href="Database.html#multiply">multiply</a></li><li data-type='method'><a href="Database.html#prepareTable">prepareTable</a></li><li data-type='method'><a href="Database.html#pull">pull</a></li><li data-type='method'><a href="Database.html#push">push</a></li><li data-type='method'><a href="Database.html#reduce">reduce</a></li><li data-type='method'><a href="Database.html#reduceRight">reduceRight</a></li><li data-type='method'><a href="Database.html#set">set</a></li><li data-type='method'><a href="Database.html#size">size</a></li><li data-type='method'><a href="Database.html#some">some</a></li><li data-type='method'><a href="Database.html#sort">sort</a></li><li data-type='method'><a href="Database.html#startsWith">startsWith</a></li><li data-type='method'><a href="Database.html#subtract">subtract</a></li><li data-type='method'><a href="Database.html#tables">tables</a></li><li data-type='method'><a href="Database.html#toJSON">toJSON</a></li><li data-type='method'><a href="Database.html#toString">toString</a></li><li data-type='method'><a href="Database.html#type">type</a></li><li data-type='method'><a href="Database.html#use">use</a></li><li data-type='method'><a href="Database.html#valueArray">valueArray</a></li></ul></li></ul> </div></div>
+      
+        <div class="navbar-resize" id="navbar-resize">
+          <div class="resize-dots-container">
+            <div class="dots"></div>
+            <div class="dots"></div>
+            <div class="dots"></div>
+          </div> 
+        </div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        Database.js
+      </h1>
+      
+
+      
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const SQLite = require("better-sqlite3");
+const { EventEmitter } = require("events");
+const fs = require("fs");
+const lodash = require("lodash");
+const Util = require("./Util");
+
+/**
+ * Represents XenDB Database class
+ * @extends EventEmitter
+ * @property {SQLite.Database} database The main SQLite3 Database
+ * @property {String} name The name of the database
+ * @property {Object} options XenDB options
+ * @property {Number} rowCount The database table's rows count
+ */
+class Database extends EventEmitter {
+    /**
+     * XenDB Database
+     * @param {String} [databaseFile="json.sqlite"] The database's file
+     * @param {Object} [options] Database options
+     * @param {SQLite.Database} [options.database] The SQLite Database
+     * @param {String} [options.path="./"] The database's path file
+     * @param {String} [options.table="JSON"] The database's table name
+     * @param {Boolean} [options.useWalMode] Whether to use wal mode or not
+     */
+    constructor(databaseFile, options) {
+        super();
+
+        this.name = databaseFile;
+        this.options = Object.assign({
+            path: "./",
+            table: "JSON",
+            useWalMode: false
+        }, options);
+
+        if (databaseFile === undefined) {
+            databaseFile = "json.sqlite";
+        }
+
+        if (typeof databaseFile !== "string") {
+            throw new TypeError("Invalid Database name specified! Need Help? Check: discord.gg/78RyqJK");
+        }
+
+        if (!this.options.database &amp;&amp; !fs.existsSync(this.options.path)) {
+            fs.mkdirSync(this.options.path)
+        }
+
+        if (options.useWalMode === true) {
+            this.database.pragma("journal_mode = wal");
+        }
+
+        Object.defineProperties(this, {
+            _database: {
+                value: this.options.database || new SQLite(databaseFile, options),
+                writable: true,
+                enumerable: false
+            },
+        });
+
+        this.prepareTable();
+    }
+
+    /**
+     * Fired when the database is ready
+     * @returns {void}
+     */
+    init() {
+        this.emit("ready");
+    }
+
+    /**
+     * Prepares a tabe
+     * @param {String} [name] The table name
+     */
+    prepareTable(name = this.options.table) {
+        this.database.prepare(`CREATE TABLE IF NOT EXISTS ${name} (ID TEXT, json TEXT)`).run();
+    }
+
+    /**
+     * Returns the SQLite3-Database Manager
+     * @type {SQLite.Database}
+     */
+    get database() {
+        return this._database;
+    }
+
+    /**
+     * Returns number of rows count
+     * @type {Number}
+     */
+    get rowCount() {
+        const res = this.database.prepare(`SELECT count(*) FROM '${this.options.table}';`).get();
+        return res["count(*)"];
+    }
+
+    /**
+     * Iterator that yields all data of this db
+     */
+    *[Symbol.iterator]() {
+        this.prepareTable(this.options.table);
+
+        yield* this.all({ table: this.options.table });
+    }
+    /**
+     * Evaluate anything inside the `Database` class using `this`
+     * @param {any} x Value to be evaluated
+     */
+    eval(x) {
+        return eval(x);
+    }
+    /**
+     * Returns an array of this table
+     */
+    array() {
+        return [...this];
+    }
+
+    /**
+     * Returns the database file size in bytes
+     * @type {Number}
+     */
+    size() {
+        try {
+            return fs.statSync(this.name).size;
+        } catch {
+            return 0;
+        }
+    }
+
+    /**
+     * Delete all data in the database
+     * @param {Object} [options] Options 
+     */
+    deleteAll(options = {}) {
+        this.prepareTable(options.table || this.options.table);
+        this.database.prepare(`DELETE FROM ${options.table || this.options.table};`).run();
+    }
+
+    /**
+     * Creates new instance of this database with the specified table
+     * @param {String} name Table name
+     */
+    createTable(name = "JSON") {
+        if (name === this.options.table) return this;
+
+        return new Database("PLACEHOLDER", {
+            database: this.database,
+            table: typeof name === "string" ? name : "JSON"
+        });
+    }
+
+    /**
+     * Returns saved data from this database. Alias of `Database.fetch()`
+     * @param {String} key Key of the data 
+     * @param {Object} options Options
+     */
+    get(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const table = options.table || this.options.table;
+        const { id, target } = Util.parseKey(key);
+
+        if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
+
+        this.prepareTable(table);
+
+        let fetched = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        if (!fetched || fetched.json === "{}") return null;
+
+        fetched = JSON.parse(fetched.json);
+
+        if (typeof fetched === "object" &amp;&amp; target) {
+            fetched = lodash.get(fetched, target);
+        }
+
+        return fetched;
+    }
+
+    /**
+     * Returns saved data from this database. Alias of `Database.get()`
+     * @param {String} key Key of the data 
+     * @param {Object} options Options
+     */
+    fetch(key, options = {}) {
+        return this.get(key, options);
+    }
+
+    /**
+     * Set or re-writes data in this database key
+     * @param {String} key Key of the data
+     * @param {any} value Value to store
+     * @param {Object} options Options
+     */
+    set(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value &amp;&amp; value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const table = options.table || this.options.table;
+        const { id, target } = Util.parseKey(key);
+
+        if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
+
+        this.prepareTable(table);
+
+        let data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        if (!data) {
+            this.database.prepare(`INSERT INTO ${table} (ID,json) VALUES (?,?)`).run(id, '{}');
+            data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        }
+
+        data = JSON.parse(data.json);
+
+        if (typeof data === "object" &amp;&amp; target) {
+            value = lodash.set(data, target, value);
+        } else if (target) throw new TypeError("Cannot Use Target With Non-Object. Need Help? Check: discord.gg/78RyqJK");
+
+        value = JSON.stringify(value);
+
+        this.database.prepare(`UPDATE ${table} SET json = (?) WHERE ID = (?)`).run(value, id);
+
+        const newData = this.fetch(id, { table: table });
+        return newData;
+    }
+
+    /**
+     * Checks if there is any matching value with provided key
+     * @param {String} key Key to match
+     * @param {Object} options Options
+     * @returns {Boolean}
+     */
+    has(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const table = options.table || this.options.table;
+        const { id, target } = Util.parseKey(key);
+
+        if (!id) throw new Error("Could Not Parse key. Need Help? Check: discord.gg/78RyqJK");
+
+        this.prepareTable(table);
+
+        let data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        if (!data) return false;
+
+        data = JSON.parse(data.json);
+
+        try { data = JSON.parse(data) } catch { }
+
+        if (target &amp;&amp; typeof data === "object") {
+            data = lodash.get(data, target);
+        }
+
+        return typeof data !== "undefined";
+    }
+
+    /**
+     * Returns data type of fetched data
+     * @param {String} key Key of the data
+     * @param {Object} options Options
+     */
+    type(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const data = this.get(key, options);
+        return Array.isArray(data) ? "array" : typeof data;
+    }
+
+    /**
+     * Deletes a data from the specified key
+     * @param {String} key Key to be delete
+     * @param {Object} options Options
+     * @returns {Boolean}
+     */
+    delete(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const table = options.table || this.options.table;
+        const { id, target } = Util.parseKey(key);
+
+        if (!id) throw new Error("Could Not Parse Key. Need Help? Check: discord.gg/78RyqJK");
+
+        this.prepareTable(table);
+
+        let data = this.database.prepare(`SELECT * FROM ${table} WHERE ID = (?)`).get(id);
+        if (!data) return false;
+
+        data = JSON.parse(data.json);
+
+        try { data = JSON.parse(data) } catch { }
+
+        if (target &amp;&amp; typeof data === "object") {
+            const r = lodash.unset(data, target);
+            if (!r) return false;
+            data = JSON.stringify(data);
+            this.database.prepare(`UPDATE ${table} SET json = (?) WHERE ID = (?)`).run(data, id);
+
+            return true;
+        } else if (target) throw new Error("Cannot Use Target With Non-Object. Need Help? Check: discord.gg/78RyqJK");
+
+        this.database.prepare(`DELETE FROM ${table} WHERE ID = (?)`).run(id);
+
+        return true;
+    }
+    /**
+     * Returns used table (or specific table) as array
+     * @param {Object} options 
+     */
+    all(options = {}) {
+        const table = options.table || this.options.table;
+        this.prepareTable(table);
+
+        const statement = this.database.prepare(`SELECT * FROM ${table} WHERE ID IS NOT NULL`);
+        let res = [];
+
+        for (const row of statement.iterate()) {
+            if (options.length &amp;&amp; typeof options.length === "number" &amp;&amp; options.length > 0 &amp;&amp; options.length === res.length) break;
+
+            try {
+                res.push({
+                    ID: row.ID,
+                    Data: JSON.parse(row.json)
+                });
+            } catch { }
+        }
+
+        return res;
+    }
+
+    /**
+     * Push an array type value into the database key
+     * @param {String} key Key of the data 
+     * @param {any} value Value to store (or push into the key)
+     * @param {Object} options Options
+     */
+    push(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value &amp;&amp; value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const has = this.has(key, options);
+        if (!has) return this.set(key, !Array.isArray(value) ? [value] : value, options);
+
+        const data = this.get(key, options);
+        if (!Array.isArray(data)) throw new TypeError("Cannot Use Push With Non-Array Type. Need Help? Check: discord.gg/78RyqJK");
+        if (Array.isArray(value)) {
+            const n = data.concat(value);
+            return this.set(key, n, options);
+        }
+        const res = [...data];
+        res.push(value);
+        return this.set(key, res, options);
+    }
+
+    /**
+     * Extract a value from an array (Reverse of `Database.push()`)
+     * @param {String} key Key of the data
+     * @param {any} value The value that wanted to be extracted/pull
+     * @param {Object} options Options
+     */
+    pull(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value &amp;&amp; value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        const data = this.get(key, options);
+        if (!Array.isArray(data)) throw new TypeError("Cannot Use Pull With Non-Array Type. Need Help? Check: discord.gg/78RyqJK");
+
+        if (!Array.isArray(value)) return this.set(key, data.filter(x => x !== value), options);
+        return this.set(key, data.filter(x => !value.includes(x)), options);
+    }
+
+    /**
+     * Extract a value from an array. Alias of `Database.pull()`
+     * @param {String} key Key of the data
+     * @param {any} value The value that wanted to be extracted
+     * @param {Object} options Options
+     */
+    extract(key, value, options = {}) {
+        return this.pull(key, value, options)
+    }
+
+    /**
+     * Fetch a specific value from the database
+     * @param {String} key Key of the data
+     * @param {any} value The value that wanted to be fetched
+     * @param {Object} options Options
+     */
+    fetchOne(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value &amp;&amp; value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        return this.fetch(key, options).filter(x => x === value)
+    }
+
+    /**
+     * Get a specific value from the database. Alias of `Database.fetchOne()`
+     * @param {String} key Key of the data
+     * @param {any} value The value that wanted to be fetched
+     * @param {Object} options Options
+     */
+    getOne(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value &amp;&amp; value != 0) throw new TypeError("No Value Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        return this.get(key, options).filter(x => x === value)
+    }
+
+    /**
+     * Alias of `Database.all()` but easier to sort by key
+     * @param {String} key The key of the data
+     * @param {Object} options Options
+     */
+    startsWith(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        let data = this.filter(i => i.ID.startsWith(key), options);
+        if (ops &amp;&amp; typeof ops.sort === "string") {
+            if (ops.sort.startsWith(".")) ops.sort = ops.sort.slice(1);
+            ops.sort = ops.sort.split(".");
+            data = lodash.sortBy(data, ops.sort).reverse();
+        }
+
+        return data;
+    }
+
+    /**
+     * Alias of `Database.all()` but easier to sort by key
+     * @param {String} key The key of the data
+     * @param {Object} options Options
+     */
+    endsWith(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        let data = this.filter(i => i.ID.endsWith(key), options);
+        if (ops &amp;&amp; ops.sort &amp;&amp; typeof ops.sort === "string") {
+            if (ops.sort.startsWith(".")) ops.sort = ops.sort.slice(1);
+            ops.sort = ops.sort.split(".");
+            data = lodash.sortBy(data, ops.sort).reverse();
+        }
+
+        return data;
+    }
+
+    /**
+     * Alias of `Database.all()`
+     * @param {Object} options Options
+     */
+    fetchAll(options = {}) {
+        return this.all(options);
+    }
+
+    /**
+     * Add numbers to a key in the database
+     * @param {String} key Key of the data
+     * @param {Number} value Any numerical value
+     * @param {Object} options Options
+     */
+    add(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
+
+        const has = this.get(key, options);
+        if (!has) return this.set(key, 0 + value, options);
+        return this.set(key, has + value, options);
+    }
+
+    /**
+     * Subtract numbers to a key from the database
+     * @param {String} key Key of the data
+     * @param {Number} value Any numerical value
+     * @param {Object} options Options
+     */
+    subtract(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
+
+        const has = this.get(key, options);
+        if (!has) return this.set(key, 0 - value, options);
+        return this.set(key, has - value, options);
+    }
+
+    /**
+     * Multiply numbers to a key in the database
+     * @param {String} key Key of the data
+     * @param {Number} value Any numerical value
+     * @param {Object} options Options
+     */
+    multiply(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
+
+        const has = this.get(key, options);
+        if (!has) return this.set(key, 0 * value, options);
+        return this.set(key, has * value, options);
+    }
+
+    /**
+     * Divide numbers to a key in the database 
+     * @param {String} key Key of the data
+     * @param {Number} value Any numerical value
+     * @param {Object} options Options
+     */
+    divide(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
+
+        const has = this.get(key, options);
+        if (!has) return this.set(key, 0 / value, options);
+        return this.set(key, has / value, options);
+    }
+
+    /**
+     * Modulus for existing data with the given numerical value.
+     * @param {String} key Key of the data 
+     * @param {Number} value Numerical value
+     * @param {Object} options Options
+     */
+    modulus(key, value, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        if (!value || typeof value !== "number") throw new TypeError("Value Must Be Numerical! Need Help? Check: discord.gg/78RyqJK");
+
+        const has = this.get(key, options);
+        if (!has) return this.set(key, 0 % value, options);
+        return this.set(key, has % value, options);
+    }
+
+    /**
+     * Returns array of keys
+     * @param {Object} options Options
+     */
+    keyArray(options = {}) {
+        return this.map(m => m.ID, options);
+    }
+
+    /**
+     * Returns array of values
+     * @param {Object} options Options
+     */
+    valueArray(options = {}) {
+        return this.map(m => m.data, options);
+    }
+
+    /**
+     * Drops currently active/specified table
+     * @param {Object} options Options
+     * @returns {Boolean}
+     */
+    drop(options = {}) {
+        const table = options.table || this.options.table;
+
+        try {
+            this.database.prepare(`DROP TABLE ${table}`).run();
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    /**
+     * Returns length of this database
+     * @type {Number}
+     */
+    get length() {
+        return this.rowCount;
+    }
+
+    /**
+     * Alias of db.has
+     * @param {String} key Key
+     * @param {Object} options Options
+     * @returns {Boolean}
+     */
+    includes(key, options = {}) {
+        if (!key || typeof key !== "string") throw new TypeError("No Key Specified! Need Help? Check: discord.gg/78RyqJK");
+
+        return this.has(key, options);
+    }
+
+    /**
+     * Identical to Array.forEach
+     * @param {Function} fn A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
+     * @param {Object} options Options
+     */
+    forEach(fn, options = {}) {
+        return this.all(options).forEach(fn);
+    }
+
+    /**
+     * Identical to Array.map
+     * @param {Function} fn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
+     * @param {Object} options Options
+     */
+    map(fn, options = {}) {
+        return this.all(options).map(fn);
+    }
+
+    /**
+     * Identical to Array.some
+     * @param {Function} fn A function that accepts up to three arguments. The some method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value true, or until the end of the array.
+     * @param {Object} options Options
+     */
+    some(fn, options = {}) {
+        return this.all(options).some(fn);
+    }
+
+    /**
+     * Identical to Array.every
+     * @param {Function} fn A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array.
+     * @param {Object} options Options
+     */
+    every(fn, options = {}) {
+        return this.all(options).every(fn);
+    }
+
+    /**
+     * Identical to Array.sort
+     * @param {Function} fn Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order.
+     * @param {Object} options Options
+     */
+    sort(fn, options = {}) {
+        return this.all(options).sort(fn);
+    }
+
+    /**
+     * Identical to Array.filter
+     * @param {Function} fn A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.
+     * @param {Object} options Options
+     */
+    filter(fn, options = {}) {
+        return this.all(options).filter(fn);
+    }
+
+    /**
+     * Identical to Array.flatMap
+     * @param {Function} fn Function that produces an element of the new Array, taking three arguments.
+     * @param {Object} options Options
+     */
+    flatMap(fn, options = {}) {
+        return this.all(options).flatMap(fn);
+    }
+
+    /**
+     * Identical to Array.reduce
+     * @param {Function} fn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
+     * @param {Object} initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
+     * @param {Object} options Options
+     */
+    reduce(fn, initialValue, options = {}) {
+        return this.all(options).reduce(fn, initialValue);
+    }
+
+    /**
+     * Identical to Array.reduceRight
+     * @param {Function} fn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
+     * @param {Object} initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
+     * @param {Object} options Options
+     */
+    reduceRight(fn, initialValue, options = {}) {
+        return this.all(options).reduceRight(fn, initialValue);
+    }
+
+    /**
+     * Identical to Array.find
+     * @param {Function} fn find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined.
+     * @param {Object} options Options
+     */
+    find(fn, options = {}) {
+        return this.all(options).find(fn);
+    }
+
+    /**
+     * Identical to Array.findIndex
+     * @param {Function} fn find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, findIndex immediately returns that element index. Otherwise, findIndex returns -1.
+     * @param {Object} options Options
+     */
+    findIndex(fn, options = {}) {
+        return this.all(options).findIndex(fn);
+    }
+
+    /**
+     * Identical to Array.indexOf
+     * @param {any} searchElement The value to locate in the array.
+     * @param {Number} fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
+     * @param {Object} options Options
+     */
+    indexOf(searchElement, fromIndex = 0, options = {}) {
+        return this.all(options).indexOf(searchElement, fromIndex);
+    }
+
+    /**
+     * Returns a value representation of an array
+     */
+    toString() {
+        return `&lt;Database ${this.length}>`;
+    }
+
+    /**
+     * Used by the JSON.stringify method to enable the transformation of an object's data for JavaScript Object Notation (JSON) serialization.
+     * @param {Object} options Options
+     */
+    toJSON(options) {
+        return this.all(options);
+    }
+
+    /**
+     * Returns all table name
+     */
+    tables() {
+        const data = this.database.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+        return {
+            count: Object.keys(data).length,
+            tables: Object.values(data).map(m => m.name)
+        };
+    }
+
+    /**
+     * Exports this db
+     * @param {Object} options Export options
+     * @deprecated 
+     */
+    export(options = { stringify: false, format: false, tableName: null, allTable: false }) {
+        let data = {
+            data: options.allTable ? this.allTableArray() : this.all({ table: options.tableName || this.options.table }),
+            mod: "quick.db",
+            generatedTimestamp: new Date().getTime()
+        };
+
+        if (options.stringify) data = JSON.stringify(data, null, options.format ? (typeof options.format === "number" ? options.format : "\t") : null);
+
+        this.emit("warn", "[DEPRECATED] Database.export is deprecated. This function will be remove on future version.");
+        return data;
+    }
+
+    /**
+     * This method updates current database manager with a new one. Database parameter can either be `Database` instance or `BetterSQLite3.Database` instance
+     * @param {any} database The database
+     */
+    use(database) {
+        if (!database) throw new Error("Database Was Not Provided!");
+        if (database.prototype instanceof Database || database instanceof Database) this._database = database._database;
+        if (database instanceof SQLite || database.prototype instanceof SQLite || database instanceof this._database || database.prototype instanceof this._database) this._database = database;
+
+        throw new Error("Invalid Database");
+    }
+
+    /**
+     * Returns all table(s) as array.
+     */
+    allTableArray() {
+        const { tables } = this.tables();
+        let arr = [];
+
+        tables.forEach((table, index) => {
+            arr.push({
+                ID: index,
+                Table: table,
+                Data: this.all({ table: table })
+            })
+        })
+
+        return arr;
+    }
+
+    flat() {
+        const { tables } = this.tables();
+
+        const data = [];
+        for (const table of tables) {
+            data.push(this.all({ table }));
+        }
+
+        return Array.prototype.flat.call(data)
+    }
+
+}
+
+module.exports = Database;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      XenDB, A NodeJS SQLite3 Database
+    </footer>
+
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"Database","link":"<a href=\"Database.html\">Database</a>"},{"title":"Database#add","link":"<a href=\"Database.html#add\">Database &rtrif; add</a>"},{"title":"Database#all","link":"<a href=\"Database.html#all\">Database &rtrif; all</a>"},{"title":"Database#allTableArray","link":"<a href=\"Database.html#allTableArray\">Database &rtrif; allTableArray</a>"},{"title":"Database#array","link":"<a href=\"Database.html#array\">Database &rtrif; array</a>"},{"title":"Database#createTable","link":"<a href=\"Database.html#createTable\">Database &rtrif; createTable</a>"},{"title":"Database#delete","link":"<a href=\"Database.html#delete\">Database &rtrif; delete</a>"},{"title":"Database#deleteAll","link":"<a href=\"Database.html#deleteAll\">Database &rtrif; deleteAll</a>"},{"title":"Database#divide","link":"<a href=\"Database.html#divide\">Database &rtrif; divide</a>"},{"title":"Database#drop","link":"<a href=\"Database.html#drop\">Database &rtrif; drop</a>"},{"title":"Database#endsWith","link":"<a href=\"Database.html#endsWith\">Database &rtrif; endsWith</a>"},{"title":"Database#eval","link":"<a href=\"Database.html#eval\">Database &rtrif; eval</a>"},{"title":"Database#every","link":"<a href=\"Database.html#every\">Database &rtrif; every</a>"},{"title":"Database#export","link":"<a href=\"Database.html#export\">Database &rtrif; export</a>"},{"title":"Database#extract","link":"<a href=\"Database.html#extract\">Database &rtrif; extract</a>"},{"title":"Database#fetch","link":"<a href=\"Database.html#fetch\">Database &rtrif; fetch</a>"},{"title":"Database#fetchAll","link":"<a href=\"Database.html#fetchAll\">Database &rtrif; fetchAll</a>"},{"title":"Database#fetchOne","link":"<a href=\"Database.html#fetchOne\">Database &rtrif; fetchOne</a>"},{"title":"Database#filter","link":"<a href=\"Database.html#filter\">Database &rtrif; filter</a>"},{"title":"Database#find","link":"<a href=\"Database.html#find\">Database &rtrif; find</a>"},{"title":"Database#findIndex","link":"<a href=\"Database.html#findIndex\">Database &rtrif; findIndex</a>"},{"title":"Database#flatMap","link":"<a href=\"Database.html#flatMap\">Database &rtrif; flatMap</a>"},{"title":"Database#forEach","link":"<a href=\"Database.html#forEach\">Database &rtrif; forEach</a>"},{"title":"Database#get","link":"<a href=\"Database.html#get\">Database &rtrif; get</a>"},{"title":"Database#getOne","link":"<a href=\"Database.html#getOne\">Database &rtrif; getOne</a>"},{"title":"Database#has","link":"<a href=\"Database.html#has\">Database &rtrif; has</a>"},{"title":"Database#includes","link":"<a href=\"Database.html#includes\">Database &rtrif; includes</a>"},{"title":"Database#indexOf","link":"<a href=\"Database.html#indexOf\">Database &rtrif; indexOf</a>"},{"title":"Database#init","link":"<a href=\"Database.html#init\">Database &rtrif; init</a>"},{"title":"Database#keyArray","link":"<a href=\"Database.html#keyArray\">Database &rtrif; keyArray</a>"},{"title":"Database#map","link":"<a href=\"Database.html#map\">Database &rtrif; map</a>"},{"title":"Database#modulus","link":"<a href=\"Database.html#modulus\">Database &rtrif; modulus</a>"},{"title":"Database#multiply","link":"<a href=\"Database.html#multiply\">Database &rtrif; multiply</a>"},{"title":"Database#prepareTable","link":"<a href=\"Database.html#prepareTable\">Database &rtrif; prepareTable</a>"},{"title":"Database#pull","link":"<a href=\"Database.html#pull\">Database &rtrif; pull</a>"},{"title":"Database#push","link":"<a href=\"Database.html#push\">Database &rtrif; push</a>"},{"title":"Database#reduce","link":"<a href=\"Database.html#reduce\">Database &rtrif; reduce</a>"},{"title":"Database#reduceRight","link":"<a href=\"Database.html#reduceRight\">Database &rtrif; reduceRight</a>"},{"title":"Database#set","link":"<a href=\"Database.html#set\">Database &rtrif; set</a>"},{"title":"Database#size","link":"<a href=\"Database.html#size\">Database &rtrif; size</a>"},{"title":"Database#some","link":"<a href=\"Database.html#some\">Database &rtrif; some</a>"},{"title":"Database#sort","link":"<a href=\"Database.html#sort\">Database &rtrif; sort</a>"},{"title":"Database#startsWith","link":"<a href=\"Database.html#startsWith\">Database &rtrif; startsWith</a>"},{"title":"Database#subtract","link":"<a href=\"Database.html#subtract\">Database &rtrif; subtract</a>"},{"title":"Database#tables","link":"<a href=\"Database.html#tables\">Database &rtrif; tables</a>"},{"title":"Database#toJSON","link":"<a href=\"Database.html#toJSON\">Database &rtrif; toJSON</a>"},{"title":"Database#toString","link":"<a href=\"Database.html#toString\">Database &rtrif; toString</a>"},{"title":"Database#type","link":"<a href=\"Database.html#type\">Database &rtrif; type</a>"},{"title":"Database#use","link":"<a href=\"Database.html#use\">Database &rtrif; use</a>"},{"title":"Database#valueArray","link":"<a href=\"Database.html#valueArray\">Database &rtrif; valueArray</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
+
+    
+    <script type="text/javascript">
+        function foo(){console.log('foo')}
+    </script>
+    
+
+    
+      <script src="scripts/resize.js"></script>
+      <script type="text/javascript">
+        var option = {"min":"300","max":"600"}
+        setupResizeOptions(option)
+      </script>
+    
+
+    
+    <script type="text/javascript">
+    function foo(){console.log('foo')}
+    </script>
+    
+
+    
+    <script type="text/javascript">
+    var option = JSON.parse('{"options":{}}')
+      console.log(option)
+      document.addEventListener("DOMContentLoaded", function () {
+        OverlayScrollbars(document.querySelectorAll('body'), option.option || {});
+      });
+    </script>
+    
+
+
+  </body>
+
+</html>

@@ -46,7 +46,7 @@
 
 
     <title>
-      Home
+      Util.js
     </title>
 
     <!--[if lt IE 9]>
@@ -120,166 +120,40 @@
 
     <div id="main" class="main-content">
       
+      <h1 id='page-title' class="page-title">
+        Util.js
+      </h1>
+      
 
       
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class Util {
 
+    /**
+     * Internal method used to parse key
+     * @param {string} key Key to be parse
+     */
+    static parseKey(key) {
+        if (!key || typeof key !== "string") return { id: null, target: null };
+        if (key.includes(".")) {
+            let spl = key.split(".");
+            let parsed = spl.shift();
+            let target = spl.join(".");
+            return { id: parsed, target: target };
+        }
+        return { id: key, target: null };
+    }
 
+}
 
-
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>Xen.db</h1>
-<p><a href="https://www.npmjs.com/package/xen.db"><img src="https://img.shields.io/npm/dt/xen.db?color=7289DA&amp;label=Total%20Downloads&amp;logo=Xen.db&amp;style=for-the-badge" alt="downloadsBadge"></a>
-<a href="https://www.npmjs.com/package/xen.db"><img src="https://img.shields.io/npm/v/xen.db?color=7289DA&amp;label=Version&amp;logo=Xen.db&amp;style=for-the-badge" alt="versionBadge"></a>
-<a href="https://xendb.js.org"><img src="https://img.shields.io/badge/Documentation-Click%20here-7289DA?style=for-the-badge" alt="docs"></a></p>
-<p><a href="https://www.npmjs.com/package/xen.db">Xen.db</a> is an open-sourced SQLite3 Database designed to be easy-to-use and beginner friendly. This Database access and store various of data persistently via <a href="https://github.com/JoshuaWise/better-sqlite3">BetterSQLite3</a>.</p>
-<h3>Features</h3>
-<ul>
-<li><strong>Powerful</strong> - Supports <strong>Non-Xen.db</strong> Method.</li>
-<li><strong>Customizable</strong> - More Utility Method.</li>
-<li><strong>Family-Friendly</strong> - Simple &amp; Easy-To-Use For Beginners.</li>
-<li><strong>100% Based</strong> - Key Value Based.</li>
-<li><strong>Persistent Database</strong> - Value Will Not Lost When On Retstarting Session.</li>
-<li><strong>Free-To-Use</strong> - Not Needed To Set Up A SQL Database Server! All Data Is Stored Locally In The Same Project.</li>
-<li><strong>Custom Database File</strong> - <strong>Xen.db</strong> Allow Users To Create Custom Database File And Its Path!</li>
-</ul>
-<hr>
-<h1>Example (Default)</h1>
-<p>Coding A Sandbox (Demo)</p>
-<pre class="prettyprint source lang-js"><code>
-const { Database } = require(&quot;xen.db&quot;);
-const db = new Database(); 
-
-// Setting an object in the database:
-db.set('userInfo', { difficulty: 'Easy' });
-// -> { difficulty: 'Easy' }
- 
-// Pushing an element to an array (that doesn't exist yet) in an object:
-db.push('userInfo.items', 'Sword');
-// -> { difficulty: 'Easy', items: ['Sword'] }
- 
-// Adding to a number (that doesn't exist yet) in an object:
-db.add('userInfo.balance', 500);
-// -> { difficulty: 'Easy', items: ['Sword'], balance: 500 }
- 
-// Repeating previous examples:
-db.push('userInfo.items', 'Watch');
-// -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 500 }
-db.add('userInfo.balance', 500);
-// -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 1000 }
- 
-// Fetching individual properties
-db.get('userInfo.balance'); // -> 1000
-db.get('userInfo.items'); // ['Sword', 'Watch']
-
-</code></pre>
-<h1>Example (Custom)</h1>
-<pre class="prettyprint source lang-js"><code>
-const { Database } = require(&quot;xen.db&quot;);
-const db = new Database(&quot;Database/xen.db&quot;, { path: &quot;Database&quot;, table: &quot;JSON&quot;});
-// Creates a Database File called &quot;xen.db&quot; inside a &quot;Database&quot; folder instead of &quot;json.sqlite&quot;
-
-// Setting an object in the database:
-db.set('userInfo', { difficulty: 'Easy' });
-// -> { difficulty: 'Easy' }
- 
-// Pushing an element to an array (that doesn't exist yet) in an object:
-db.push('userInfo.items', 'Sword');
-// -> { difficulty: 'Easy', items: ['Sword'] }
- 
-// Adding to a number (that doesn't exist yet) in an object:
-db.add('userInfo.balance', 500);
-// -> { difficulty: 'Easy', items: ['Sword'], balance: 500 }
- 
-// Repeating previous examples:
-db.push('userInfo.items', 'Watch');
-// -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 500 }
-db.add('userInfo.balance', 500);
-// -> { difficulty: 'Easy', items: ['Sword', 'Watch'], balance: 1000 }
- 
-// Fetching individual properties
-db.get('userInfo.balance'); // -> 1000
-db.get('userInfo.items'); // ['Sword', 'Watch']
-
-</code></pre>
-<hr>
-<h1>Creating A Table</h1>
-<pre class="prettyprint source lang-js"><code>
-// Creates New Table
-const table = db.createTable(&quot;MyTable&quot;);
-
-db.set(&quot;Inv&quot;, &quot;Sword&quot;);
-table.set(&quot;Inv&quot;, &quot;Diamond&quot;);
-
-db.get(&quot;Inv&quot;);
-// -> Sword
-
-table.get(&quot;Inv&quot;);
-// -> Diamond
-
-</code></pre>
-<hr>
-<h1>List All Tables</h1>
-<pre class="prettyprint source lang-js"><code>
-const tables = db.tables();
-
-console.log(tables);
-
-</code></pre>
-<hr>
-<h1>Why Xen.db?</h1>
-<ul>
-<li><strong>Lightweight</strong></li>
-<li><strong>Consistent</strong></li>
-<li><strong>Easy-To-Use</strong></li>
-<li><strong>Customizable</strong></li>
-<li><strong>Key &amp; Value Based</strong></li>
-<li><strong>Persistent Database</strong></li>
-</ul>
-<p>We've Over <em><strong>2,000+</strong></em> Downloads On <strong>NPM</strong>!</p>
-<p>Check Out Our <a href="https://github.com/NotMarx/Xen.db">GitHub</a> For Contributions!</p>
-<hr>
-<h1>Installation</h1>
-<p>If You Have Trouble Installing <strong>Xen.db</strong>. Please Follow This <a href="https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md">Troubleshooting Guide</a>.</p>
-<h5>Windows Platform</h5>
-<ol>
-<li><strong>Open</strong>: Any Terminal (Eg. PowerShell, Command Prompt)</li>
-<li><strong>Run</strong>: <code>npm i xen.db</code></li>
-</ol>
-<ul>
-<li>If you want to be more updated, you can install the dev version instead: <code>npm i NotMarx/xen.db#dev</code></li>
-</ul>
-<p><strong>Note:</strong> Windows Users Might Need To Do The Following <a href="https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md">Additional Steps</a>.</p>
-<h5>Mac Platform</h5>
-<ol>
-<li><strong>Install</strong>: XCode</li>
-<li><strong>Run</strong>: <code>npm i -g node-gyp</code> In Your Console Or Terminal</li>
-<li><strong>Run</strong>: <code>node-gyp --python /path/to/python2.7</code></li>
-<li><strong>Finally, Run</strong>: <code>npm i xen.db</code></li>
-</ol>
-<hr>
-<h1>Documentation</h1>
-<ul>
-<li>Please <a href="https://xendb.js.org">Click Here</a> For <strong>Xen.db</strong> Documentation!</li>
-</ul>
-<hr>
-<ul>
-<li>If You Need Help, Please Join Our <a href="https://discord.gg/78RyqJK">Support Server</a> And Ask In The <a href="https://discord.com/channels/750546490614743150/756354697077719100">#xen-db</a> Channel.</li>
-</ul></article>
+module.exports = Util;</code></pre>
+        </article>
     </section>
-
-
 
 
 
