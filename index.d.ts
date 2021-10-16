@@ -83,6 +83,7 @@ declare module "xen.db" {
 
     export interface DatabaseEvents {
         ready: [];
+        warn: [message: string];
     }
 
     export type Callbackfn<T> = (value: DataSet, index: number, array: DataSet[]) => T;
@@ -92,23 +93,12 @@ declare module "xen.db" {
      * The Database Class
      */
     export class Database extends EventEmitter {
-        /**
-         * The Database File
-         */
-        databaseFile: string;
+        
+        name: string;
+        options: DatabaseOptions;
 
         /**
-         * The Database Path
-         */
-        path: string;
-
-        /**
-         * The Database Table Name
-         */
-        tableName: string;
-
-        /**
-         * The Database Class
+         * Represents XenDB Database class
          * @param databaseFile Database File Name
          * @param options Database Options
          */
