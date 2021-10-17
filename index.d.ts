@@ -440,22 +440,25 @@ declare module "xen.db";
          * @deprecated
          */
         public export(options: { allTable: true }): { data: { id: number, table: string, data: DataSet[] }[]; mod: string; generatedTimestamp: number; };
-        
+
         /**
          * Export this database
          * @param options Options
+         * @deprecated
          */
         public export(options: { allTable: false }): { data: DataSet[]; mod: string; generatedTimestamp: number; }
 
         /**
          * Export this database
          * @param options Options
+         * @deprecated
          */
         public export(options: { stringify: true }): string;
 
         /**
          * Export this database
          * @param options Options
+         * @deprecated
          */
         public export(options?: { stringify?: boolean, format?: boolean | number, tableName?: string, allTable?: boolean }): { data: DataSet[] | { id: number, table: string, data: DataSet[] }[]; mod: string; generatedTimestamp: number; } | string;
 
