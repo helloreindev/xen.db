@@ -82,6 +82,7 @@ declare module "xen.db";
     }
 
     export interface DatabaseEvents {
+        error: [message: string];
         ready: [];
         warn: [message: string];
     }
