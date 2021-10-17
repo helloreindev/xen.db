@@ -117,6 +117,11 @@ declare module "xen.db" {
         public get rowCount(): number;
 
         /**
+         * Fired when the database is ready
+         */
+        public init(): void;
+
+        /**
          * Prepares A Database Table
          * @param name The Table Name
          */
@@ -432,6 +437,7 @@ declare module "xen.db" {
         /**
          * 
          * @param options Options
+         * @deprecated
          */
         public export(options: { allTable: true }): { data: { id: number, table: string, data: DataSet[] }[]; mod: string; generatedTimestamp: number; };
         /**
