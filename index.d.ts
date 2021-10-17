@@ -473,6 +473,10 @@ declare module "xen.db";
          * Returns All Database Table(s) As An Array
          */
         public allTableArray(): { ID: number; Table: string; Data: DataSet[] }[];
+
+        /**
+         * @deprecated
+         */
         public flat(): DataSet[];
 
         public on<K extends keyof DatabaseEvents>(event: K, listener: (...args: DatabaseEvents[K]) => void): this;
