@@ -4,7 +4,7 @@ import { EventEmitter } from "events";
 /**
  * Xen.db Definitions & Typings By: Reinhardt (<notmarx.tech@gmail.com>)
  */
-declare module "xen.db" {
+declare module "xen.db";
 
     /**
      * Parse A Key
@@ -435,25 +435,26 @@ declare module "xen.db" {
         public tables(): { count: number; tables: string[] };
 
         /**
-         * 
+         * Export this database
          * @param options Options
          * @deprecated
          */
         public export(options: { allTable: true }): { data: { id: number, table: string, data: DataSet[] }[]; mod: string; generatedTimestamp: number; };
+        
         /**
-         * 
+         * Export this database
          * @param options Options
          */
         public export(options: { allTable: false }): { data: DataSet[]; mod: string; generatedTimestamp: number; }
 
         /**
-         * 
+         * Export this database
          * @param options Options
          */
         public export(options: { stringify: true }): string;
 
         /**
-         * 
+         * Export this database
          * @param options Options
          */
         public export(options?: { stringify?: boolean, format?: boolean | number, tableName?: string, allTable?: boolean }): { data: DataSet[] | { id: number, table: string, data: DataSet[] }[]; mod: string; generatedTimestamp: number; } | string;
@@ -509,4 +510,3 @@ declare module "xen.db" {
      * ```
      */
     export const VERSION: string;
-}
