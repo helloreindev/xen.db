@@ -128,7 +128,7 @@ console.log(tables);
 
 We've Over ***2,000+*** Downloads On **NPM**!   
 
-Check Out Our [GitHub](https://github.com/NotMarx/Xen.db) For Contributions!
+Check Out Our [GitHub](https://github.com/NotMarx/xen.db) For Contributions!
 
 ---
 
