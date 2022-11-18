@@ -10,8 +10,12 @@
 
 ## Installation
 
-```
-npm install xen.db
+```bash
+# For SQLite
+npm install xen.db better-sqlite3
+
+# For MySQL
+npm install xen.db promise-mysql
 ```
 
 > Please follow the provided [troubleshooting guide](https://github.com/WiseLibs/better-sqlite3/blob/master/docs/troubleshooting.md) if you are having issues installing it.
