@@ -2,6 +2,7 @@
   "name": "xen.db",
   "version": "4.0.0-dev",
   "description": "An Open-Source NodeJS Database",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/helloreindev/xen.db.git"
@@ -31,7 +32,8 @@
   },
   "homepage": "https://xendb.js.org",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "tslib": "^2.4.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.2",
@@ -39,7 +41,6 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "better-sqlite3": "^7.6.2",
-    "clean-jsdoc-theme": "^3.2.8",
     "eslint": "^8.27.0",
     "eslint-plugin-sort-class-members": "^1.15.2",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
