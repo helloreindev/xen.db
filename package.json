@@ -1,38 +1,54 @@
 {
   "name": "xen.db",
-  "version": "3.2.1-dev",
-  "description": "A SQLite3 Database. Easy-To-Use For Beginners & Persistent Database.",
-  "main": "index.js",
+  "version": "4.0.0-dev",
+  "description": "An Open-Source NodeJS Database",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NotMarx/xen.db.git"
+    "url": "git+https://github.com/helloreindev/xen.db.git"
   },
   "scripts": {
-    "docs": "node_modules/.bin/jsdoc --configure jsdoc.json --verbose"
+    "build": "tsc",
+    "lint": "eslint --ext \".ts\" --ignore-path .gitignore . && prettier --check .",
+    "lint:fix": "eslint --ext \".ts\" --ignore-path .gitignore . --fix && prettier --write --list-different ."
   },
   "keywords": [
     "db",
     "database",
     "persistent",
+    "nodejs",
+    "promise-mysql",
+    "better-sqlite3",
+    "mysql",
     "sqlite",
     "sql",
     "xen.db",
     "sqlite3"
   ],
-  "author": "reinhardt",
+  "author": "Reinhardt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NotMarx/xen.db/issues"
+    "url": "https://github.com/helloreindev/xen.db/issues"
   },
   "homepage": "https://xendb.js.org",
   "dependencies": {
-    "better-sqlite3": "^7.1.2",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.2",
+    "@types/lodash": "^4.14.189",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "better-sqlite3": "^7.6.2",
     "clean-jsdoc-theme": "^3.2.8",
+    "eslint": "^8.27.0",
+    "eslint-plugin-sort-class-members": "^1.15.2",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "mongoose": "^6.7.2",
+    "prettier": "^2.7.1",
+    "promise-mysql": "^5.2.0",
     "ts-node": "^10.2.1",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.3"
+    "typescript": "^4.7.4"
   }
 }
