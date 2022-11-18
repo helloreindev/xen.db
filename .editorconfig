@@ -1,0 +1,4 @@
+root = true
+
+[*.ts]
+tab_width = 4
