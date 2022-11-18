@@ -1,4 +1,4 @@
 export interface ISQLiteDriver {
-    fileName: string;
+    fileName?: string;
     tableName?: string;
 }
