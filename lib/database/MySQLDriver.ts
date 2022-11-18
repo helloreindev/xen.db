@@ -40,12 +40,10 @@ export class MySQLDriver {
         this.database = require("promise-mysql");
         this.options = Object.assign(
             {
-                tabeName: "database",
+                tableName: "database",
             },
             options
         );
-
-        this.checkConnection();
     }
 
     /**
@@ -87,6 +85,8 @@ export class MySQLDriver {
      * @returns {Promise<IDataSet[]>}
      */
     public async all(): Promise<IDataSet[]> {
+        await this.checkConnection();
+
         const datas: IDataSet[] = await this.connection?.query(
             `SELECT * FROM ${this.table}`
         );
@@ -98,7 +98,7 @@ export class MySQLDriver {
     }
 
     private checkConnection() {
-        if (this.connection === null) {
+        if (!this.connection || this.connection === null) {
             throw new Error("MySQL is not connected yet!");
         }
     }
@@ -145,6 +145,8 @@ export class MySQLDriver {
     }
 
     private async deleteRowKey(key: string): Promise<boolean> {
+        await this.checkConnection();
+
         await this.connection?.query(`DELETE FROM ${this.table} WHERE ID = ?`, [
             key,
         ]);
@@ -181,6 +183,8 @@ export class MySQLDriver {
     }
 
     private async getRowKey<T>(key: string): Promise<T> {
+        await this.checkConnection();
+
         const datas: any[] = await this.connection?.query(
             `SELECT JSON FROM ${this.table} WHERE ID = ?`,
             [key]
@@ -203,6 +207,8 @@ export class MySQLDriver {
      * @param table The table name of the database
      */
     public async prepare(table: string): Promise<void> {
+        await this.checkConnection();
+
         await this.connection?.query(
             `CREATE TABLE IF NOT EXISTS ${table} (ID TEXT, JSON TEXT)`
         );
@@ -313,6 +319,8 @@ export class MySQLDriver {
     }
 
     private async setRowKey<T>(key: string, value: T): Promise<T> {
+        await this.checkConnection();
+
         const json = JSON.stringify(value);
         const data = await this.has(key);
 
