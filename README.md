@@ -53,10 +53,10 @@ db.add("World.Money", 5000);
 ```js
 const { MySQLDriver } = require("xen.db");
 const db = new MySQLDriver({
-    database: "test",
-    host: "localhost",
-    password: "password",
-    user: "root"
+  database: "test",
+  host: "localhost",
+  password: "password",
+  user: "root",
 });
 
 db.set("Name", "Hellorein");
