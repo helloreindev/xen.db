@@ -1,0 +1,72 @@
+---
+env:
+  es6: true
+  node: true
+plugins:
+  - sort-keys-fix
+  - sort-imports-es6-autofix
+  - sort-class-members
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+rules:
+  "@typescript-eslint/no-empty-function": 0
+  "@typescript-eslint/no-explicit-any": 0
+  "@typescript-eslint/consistent-type-definitions": 2
+  "@typescript-eslint/semi":
+    - 2
+    - always
+  "@typescript-eslint/ban-ts-comment":
+    - 0
+  eol-last: 2
+  keyword-spacing:
+    - 2
+    - after: true
+  lines-between-class-members:
+    - 2
+    - always
+  no-async-promise-executor: 0
+  no-prototype-builtins: 0
+  no-trailing-spaces: 2
+  no-var: 2
+  object-curly-spacing:
+    - 2
+    - always
+  padding-line-between-statements:
+    - 2
+    - blankLine: always
+      prev: [multiline-block-like, directive]
+      next: "*"
+    - blankLine: always
+      prev: "*"
+      next: multiline-block-like
+  quotes:
+    - 2
+    - double
+  semi:
+    - 2
+    - always
+  sort-keys:
+    - 2
+    - asc
+  sort-keys-fix/sort-keys-fix:
+    - 2
+  sort-class-members/sort-class-members:
+    - 2
+    - order:
+        - "[alphabetical-properties]"
+        - constructor
+        - "[alphabetical-getters]"
+        - "[alphabetical-methods]"
+        - "[everything-else]"
+      groups:
+        alphabetical-properties:
+          - type: property
+            sort: alphabetical
+        alphabetical-getters:
+          - kind: get
+            sort: alphabetical
+        alphabetical-methods:
+          - type: method
+            sort: alphabetical
