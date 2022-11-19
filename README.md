@@ -1,8 +1,10 @@
+# XenDB
+
 [![Discord](https://discord.com/api/guilds/750546490614743150/widget.png?style=shield)](https://discord.gg/78RyqJK)
 [![GitHub Release](https://img.shields.io/github/v/release/helloreindev/xen.db?include_prereleases)](https://github.com/helloreindev/xen.db/releases/latest)
 [![NPM](https://img.shields.io/npm/v/xen.db?color=green)](https://npmjs.com/package/xen.db)
 
-**XenDB** is an open-source NodeJS database.
+**XenDB** is an open-source NodeJS database driver. This library was built for a simple usage to access, store, and update data at any time easily. These data are stored persistently and securely via various of database supported.
 
 - Discord: [discord.gg/78RyqJK](https://discord.78RyqJK)
 - GitHub: [github.com/helloreindev/xen.db](https://github.com/helloreindev/xen.db)
