@@ -210,7 +210,7 @@ export class SQLiteDriver {
 
         if (!value) {
             throw new TypeError(
-                `value parameter should be a value. (val=${value})`
+                `value parameter is missing. (val=${value})`
             );
         }
 
