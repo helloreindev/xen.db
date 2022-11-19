@@ -31,7 +31,7 @@ export class MySQLDriver {
     /**
      * Creates a new instance of the MySQL database driver
      * @param config The configuration of the MySQL database
-     * @param options The options for the SQLite driver
+     * @param options The options for the MySQL driver
      * @param options.tableName The table name of the database
      */
     constructor(config: MySQL.ConnectionConfig, options: IMySQLDriver) {
@@ -231,9 +231,7 @@ export class MySQLDriver {
         }
 
         if (!value) {
-            throw new TypeError(
-                `value parameter should be a value. (val=${value})`
-            );
+            throw new TypeError(`value parameter is missing. (val=${value})`);
         }
 
         let arr = (await this.get<T[]>(key)) ?? [];
