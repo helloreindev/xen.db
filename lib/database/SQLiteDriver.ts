@@ -209,9 +209,7 @@ export class SQLiteDriver {
         }
 
         if (!value) {
-            throw new TypeError(
-                `value parameter is missing. (val=${value})`
-            );
+            throw new TypeError(`value parameter is missing. (val=${value})`);
         }
 
         let arr = (await this.get<T[]>(key)) ?? [];
