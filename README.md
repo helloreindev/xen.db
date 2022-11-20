@@ -67,18 +67,17 @@ const db = new MySQLDriver({
 
   await db.set("Name", "Hellorein");
   // -> { Name: "Hellorein" } <-
-  
+
   await db.set("World", { Time: "Day", Money: 15000 });
   // -> { World: { Time: "Day", Money: 15000 } } <-
-  
+
   await db.get("World");
   // -> { World: { Time: "Day", Money: 15000 } } <-
-  
+
   await db.push("Cart", ["Weapon A", "Weapon B"]);
   // -> { Cart: ["Weapon A", "Weapon B"] } <-
-  
+
   await db.add("World.Money", 5000);
   // -> { World: { Time: "Day", Money: 20000 } } <-
 })();
-
 ```
