@@ -4,7 +4,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/helloreindev/xen.db?include_prereleases)](https://github.com/helloreindev/xen.db/releases/latest)
 [![NPM](https://img.shields.io/npm/v/xen.db?color=green)](https://npmjs.com/package/xen.db)
 
-**XenDB** is an open-source NodeJS database driver. This library was built for a simple usage to access, store, and update data at any time easily. These data are stored persistently and securely via various of database supported.
+**XenDB** is an open-source asynchronous NodeJS database driver. This library was built for a simple usage to access, store, and update data at any time easily. These data are stored persistently and securely via various of database supported.
 
 - Discord: [discord.gg/78RyqJK](https://discord.78RyqJK)
 - GitHub: [github.com/helloreindev/xen.db](https://github.com/helloreindev/xen.db)
@@ -61,21 +61,23 @@ const db = new MySQLDriver({
   user: "root",
 });
 
-db.set("Name", "Hellorein");
-// -> { Name: "Hellorein" } <-
+(async () => {
+  // Connect the database to MySQL. This always come first.
+  await db.connect();
 
-db.set("World", { Time: "Day", Money: 15000 });
-// -> { World: { Time: "Day", Money: 15000 } } <-
+  await db.set("Name", "Hellorein");
+  // -> { Name: "Hellorein" } <-
 
-db.get("World");
-// -> { World: { Time: "Day", Money: 15000 } } <-
+  await db.set("World", { Time: "Day", Money: 15000 });
+  // -> { World: { Time: "Day", Money: 15000 } } <-
 
-db.push("Cart", ["Weapon A", "Weapon B"]);
-// -> { Cart: ["Weapon A", "Weapon B"] } <-
+  await db.get("World");
+  // -> { World: { Time: "Day", Money: 15000 } } <-
 
-db.add("World.Money", 5000);
-// -> { World: { Time: "Day", Money: 20000 } } <-
+  await db.push("Cart", ["Weapon A", "Weapon B"]);
+  // -> { Cart: ["Weapon A", "Weapon B"] } <-
 
-// Connect the database to MySQL
-db.connect();
+  await db.add("World.Money", 5000);
+  // -> { World: { Time: "Day", Money: 20000 } } <-
+})();
 ```

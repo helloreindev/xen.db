@@ -40,10 +40,11 @@ export class MySQLDriver {
         this.database = require("promise-mysql");
         this.options = Object.assign(
             {
-                tableName: "database",
+                tableName: "json",
             },
             options
         );
+        this.table = this.options.tableName;
     }
 
     /**
@@ -98,7 +99,7 @@ export class MySQLDriver {
     }
 
     private checkConnection() {
-        if (!this.connection || this.connection === null) {
+        if (this.connection === null) {
             throw new Error("MySQL is not connected yet!");
         }
     }
@@ -110,6 +111,8 @@ export class MySQLDriver {
         this.connection = (await this.database.createConnection(
             this.config
         )) as any;
+
+        this.prepare(this.table);
     }
 
     /**
