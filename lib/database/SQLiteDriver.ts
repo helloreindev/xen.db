@@ -32,8 +32,8 @@ export class SQLiteDriver {
     constructor(options?: ISQLiteDriver) {
         this.options = Object.assign(
             {
-                fileName: "database.sqlite",
-                tableName: "database",
+                fileName: "json.sqlite",
+                tableName: "json",
             },
             options
         );
