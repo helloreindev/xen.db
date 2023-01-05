@@ -34,7 +34,7 @@ export class MySQLDriver {
      * @param options The options for the MySQL driver
      * @param options.tableName The table name of the database
      */
-    constructor(config: MySQL.ConnectionConfig, options: IMySQLDriver) {
+    public constructor(config: MySQL.ConnectionConfig, options: IMySQLDriver) {
         this.config = config;
         /* eslint-disable-next-line */
         this.database = require("promise-mysql");
@@ -100,7 +100,7 @@ export class MySQLDriver {
 
     private checkConnection() {
         if (this.connection === null) {
-            throw new Error("MySQL is not connected yet!");
+            throw new Error("MySQL connection is not established");
         }
     }
 

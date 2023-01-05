@@ -29,7 +29,7 @@ export class SQLiteDriver {
      * @param options.fileName The file name of the database
      * @param options.tableName The table name of the database
      */
-    constructor(options?: ISQLiteDriver) {
+    public constructor(options?: ISQLiteDriver) {
         this.options = Object.assign(
             {
                 fileName: "json.sqlite",
