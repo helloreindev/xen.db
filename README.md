@@ -1,6 +1,8 @@
 # XenDB
 
 [![Discord](https://discord.com/api/guilds/750546490614743150/widget.png?style=shield)](https://discord.gg/78RyqJK)
+[![CI](https://github.com/helloreindev/xen.db/actions/workflows/ci.yml/badge.svg)](https://github.com/helloreindev/xen.db/actions/workflows/ci.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/helloreindev/xen.db/badge)](https://www.codefactor.io/repository/github/helloreindev/xen.db)
 [![GitHub Release](https://img.shields.io/github/v/release/helloreindev/xen.db?include_prereleases)](https://github.com/helloreindev/xen.db/releases/latest)
 [![NPM](https://img.shields.io/npm/v/xen.db?color=green)](https://npmjs.com/package/xen.db)
 
