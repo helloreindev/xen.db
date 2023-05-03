@@ -51,7 +51,7 @@ export class SQLiteDriver {
      * @param value The value to add to the key value
      * @returns {Promise<number>}
      */
-    public async add(key, value: number): Promise<number> {
+    public async add(key: string, value: number): Promise<number> {
         if (typeof key !== "string") {
             throw new TypeError(
                 `key parameter should be a string. (val=${key})`
